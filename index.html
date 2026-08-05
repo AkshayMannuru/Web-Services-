@@ -13,6 +13,76 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<style>
+  /* --- Dark Theme Overrides --- */
+  :root {
+    --bg: #0f1115;
+    --bg-soft: #1a1d24;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --border: rgba(255, 255, 255, 0.08);
+    --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    --card-hover-shadow: 0 16px 48px rgba(0, 87, 255, 0.35);
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+  }
+
+  /* Specific overrides for Navbar in Dark Mode */
+  .navbar.scrolled {
+    background: rgba(15, 17, 21, 0.95);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-links.open {
+    background: rgba(15, 17, 21, 0.97);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-links a {
+    color: var(--text-muted);
+  }
+
+  .nav-links.open a {
+    color: var(--text);
+  }
+
+  .hamburger span {
+    background: var(--text);
+  }
+
+  /* Card Dark Theme Overrides */
+  .service-card, 
+  .industry-pill, 
+  .portfolio-card, 
+  .portfolio-info, 
+  .pricing-card, 
+  .testimonial-card, 
+  .carousel-btn {
+    background: #181b21 !important;
+    box-shadow: var(--card-shadow) !important;
+  }
+
+  .portfolio-info {
+    box-shadow: none !important;
+  }
+
+  .service-card:hover, 
+  .industry-pill:hover, 
+  .portfolio-card:hover, 
+  .pricing-card:hover, 
+  .testimonial-card:hover, 
+  .carousel-btn:hover {
+    box-shadow: var(--card-hover-shadow) !important;
+  }
+
+  .pricing-card.featured {
+    background: linear-gradient(#181b21, #181b21) padding-box,
+                var(--gradient) border-box !important;
+  }
+</style>
 </head>
 <body data-page="home">
 
@@ -34,9 +104,10 @@
     </a>
     <ul class="nav-links" id="navLinks" role="list">
       <li><a href="index.html"    data-page="home">Home</a></li>
+      <li><a href="about.html"    data-page="about">About</a></li>
       <li><a href="services.html" data-page="services">Services</a></li>
       <li><a href="portfolio.html"data-page="portfolio">Portfolio</a></li>
-      <li><a href="about.html"    data-page="about">About</a></li>
+      
       <li><a href="contact.html"  data-page="contact">Contact</a></li>
     </ul>
     <a class="btn-nav" href="contact.html" aria-label="Request a website quote">Request a Website</a>
@@ -94,8 +165,7 @@
 
       <!-- Title with split-text -->
       <h1 class="hero-title" id="heroTitle">
-        Affordable Websites<br>
-        <span class="gradient-text">for Every Business</span>
+        Affordable Websites <span class="gradient-text">for Every Business</span>
       </h1>
 
       <!-- Subtitle -->
@@ -236,10 +306,10 @@
       <h2 class="section-title reveal" id="portfolio-heading">Projects We're<br>Proud Of</h2>
 
       <div class="portfolio-grid">
-        <!-- Large card -->
-        <div class="portfolio-card large reveal" data-delay="0">
+        <!-- Card 1 -->
+        <div class="portfolio-card reveal" data-delay="0">
           <div class="portfolio-img" style="background:linear-gradient(135deg,#ff6b6b,#ee5a24);" role="img" aria-label="La Bella Cucina restaurant website mockup">
-            <div class="portfolio-mockup">
+            <div class="portfolio-mockup small">
               <div class="mockup-bar"></div>
               <div class="mockup-content">
                 <div class="mockup-hero-text">La Bella Cucina</div>

@@ -287,6 +287,26 @@
       width: 400px;
       height: 400px;
       margin: 0 auto;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    @media (max-width: 900px) {
+      .tech-orbit-container {
+        transform: translateX(-50%) scale(0.85);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .tech-orbit-container {
+        transform: translateX(-50%) scale(0.7);
+      }
+    }
+    
+    @media (max-width: 400px) {
+      .tech-orbit-container {
+        transform: translateX(-50%) scale(0.55);
+      }
     }
 
     .orbit-center {
@@ -529,9 +549,10 @@
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html" data-page="home">Home</a></li>
+        <li><a href="about.html"    data-page="about">About</a></li>
         <li><a href="services.html" data-page="services">Services</a></li>
         <li><a href="portfolio.html" data-page="portfolio">Portfolio</a></li>
-        <li><a href="about.html" data-page="about">About</a></li>
+        
         <li><a href="contact.html" data-page="contact">Contact</a></li>
       </ul>
       <a class="btn-nav" href="contact.html">Request a Website</a>
@@ -546,11 +567,32 @@
      =========================== -->
   <div id="page-services" class="page active">
     <section class="page-hero">
-      <div class="hero-bg">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="grid-overlay"></div>
+      <!-- Aurora canvas -->
+      <canvas id="aurora-canvas" aria-hidden="true"></canvas>
+
+      <!-- Particle canvas -->
+      <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+      <!-- Grid overlay -->
+      <div class="grid-overlay" aria-hidden="true"></div>
+
+      <!-- Ambient orbs -->
+      <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
+
+      <!-- Decorative shapes -->
+      <div class="hero-shape shape-ring"       aria-hidden="true"></div>
+      <div class="hero-shape shape-ring-inner" aria-hidden="true"></div>
+      <div class="hero-shape shape-dot-cluster" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
       </div>
+
+      <!-- Parallax background container -->
+      <div class="hero-bg" id="heroBg" aria-hidden="true"></div>
       <div class="container page-hero-content">
         <div class="page-hero-grid">
           <div class="hero-text">
