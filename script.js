@@ -125,3 +125,86 @@ if (scrollToFormBtn) {
     document.querySelector('.contact-form-card').scrollIntoView({ behavior: 'smooth' });
   });
 }
+
+// ===========================
+// Responsive modal (contact page only)
+// ===========================
+const openModalBtn = document.getElementById('openModalBtn');
+const closeModalBtn = document.getElementById('closeModalBtn');
+const responsiveModal = document.getElementById('responsiveModal');
+
+if (openModalBtn && closeModalBtn && responsiveModal) {
+  const toggleModal = visible => {
+    responsiveModal.classList.toggle('active', visible);
+    document.body.style.overflow = visible ? 'hidden' : '';
+  };
+
+  openModalBtn.addEventListener('click', () => toggleModal(true));
+  closeModalBtn.addEventListener('click', () => toggleModal(false));
+  responsiveModal.addEventListener('click', e => {
+    if (e.target === responsiveModal) toggleModal(false);
+  });
+}
+
+// ===========================
+// Custom select conversion (contact page only)
+// Converts <select class="js-custom-select"> into a styled dropdown
+// ===========================
+function initCustomSelects() {
+  document.querySelectorAll('select.js-custom-select').forEach(select => {
+    if (select.dataset.custom === '1') return;
+    select.style.display = 'none';
+    const wrapper = document.createElement('div');
+    wrapper.className = 'custom-select';
+    select.parentNode.insertBefore(wrapper, select);
+    wrapper.appendChild(select);
+
+    const trigger = document.createElement('button');
+    trigger.type = 'button';
+    trigger.className = 'custom-select__trigger';
+    const initial = select.options[select.selectedIndex] ? select.options[select.selectedIndex].text : select.options[0].text;
+    trigger.innerHTML = `<span>${initial}</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    wrapper.appendChild(trigger);
+
+    const options = document.createElement('div');
+    options.className = 'custom-select__options';
+    Array.from(select.options).forEach(opt => {
+      const item = document.createElement('div');
+      item.className = 'custom-select__option';
+      if (opt.disabled) item.classList.add('disabled');
+      if (opt.selected) item.classList.add('selected');
+      item.dataset.value = opt.value;
+      item.textContent = opt.text;
+      item.addEventListener('click', () => {
+        if (opt.disabled) return;
+        select.value = item.dataset.value;
+        select.dispatchEvent(new Event('change', { bubbles: true }));
+        trigger.querySelector('span').textContent = item.textContent;
+        options.querySelectorAll('.selected').forEach(s => s.classList.remove('selected'));
+        item.classList.add('selected');
+        wrapper.classList.remove('open');
+      });
+      options.appendChild(item);
+    });
+    wrapper.appendChild(options);
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = wrapper.classList.toggle('open');
+      if (isOpen) options.classList.add('open'); else options.classList.remove('open');
+    });
+
+    // close on outside click
+    document.addEventListener('click', (e) => {
+      if (!wrapper.contains(e.target)) {
+        wrapper.classList.remove('open');
+        options.classList.remove('open');
+      }
+    });
+
+    // mark processed
+    select.dataset.custom = '1';
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => initCustomSelects());
