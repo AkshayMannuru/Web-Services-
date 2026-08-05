@@ -13,9 +13,15 @@
       background: #121212 !important;
     }
     .page-header {
+      position: relative;
+      overflow: hidden;
       padding: 150px 0 50px;
       text-align: center;
-      background: radial-gradient(circle at 50% 0%, #1e1e24 0%, #121212 100%);
+      background: #020818;
+    }
+    .page-header .container {
+      position: relative;
+      z-index: 1;
     }
     .section-label {
       color: #9ca3af;
@@ -210,12 +216,48 @@
     .discover-btn:hover {
       background: rgba(255, 255, 255, 0.05);
     }
+    @media (max-width: 1024px) {
+      .service-content-wrapper {
+        gap: 2rem;
+      }
+      .service-detail-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
     @media (max-width: 900px) {
       .service-content-wrapper {
         grid-template-columns: 1fr;
       }
+    }
+    @media (max-width: 768px) {
+      .page-header h1 {
+        font-size: 2.5rem;
+      }
+      .service-body h2 {
+        font-size: 1.75rem;
+      }
+      .related-services h2 {
+        font-size: 2rem;
+      }
       .service-detail-grid {
         grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 600px) {
+      .page-header {
+        padding: 120px 0 40px;
+      }
+      .page-header h1 {
+        font-size: 2rem;
+      }
+      .service-body h2 {
+        font-size: 1.5rem;
+      }
+      .sidebar-widget, .contact-form-widget {
+        padding: 1.5rem;
+      }
+      .service-detail-item {
+        padding: 1.5rem;
       }
     }
   </style>
@@ -230,9 +272,10 @@
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html" data-page="home">Home</a></li>
+        <li><a href="about.html"    data-page="about">About</a></li>
         <li><a href="services.html" data-page="services">Services</a></li>
         <li><a href="portfolio.html" data-page="portfolio">Portfolio</a></li>
-        <li><a href="about.html" data-page="about">About</a></li>
+       
         <li><a href="contact.html" data-page="contact">Contact</a></li>
       </ul>
       <a class="btn-nav" href="contact.html">Request a Website</a>
@@ -243,6 +286,33 @@
   </nav>
 
   <div class="page-header">
+    <!-- Aurora canvas -->
+    <canvas id="aurora-canvas" aria-hidden="true"></canvas>
+
+    <!-- Particle canvas -->
+    <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+    <!-- Grid overlay -->
+    <div class="grid-overlay" aria-hidden="true"></div>
+
+    <!-- Ambient orbs -->
+    <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+    <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
+    <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
+
+    <!-- Decorative shapes -->
+    <div class="hero-shape shape-ring"       aria-hidden="true"></div>
+    <div class="hero-shape shape-ring-inner" aria-hidden="true"></div>
+    <div class="hero-shape shape-dot-cluster" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    </div>
+
+    <!-- Parallax background container -->
+    <div class="hero-bg" id="heroBg" aria-hidden="true"></div>
+    
     <div class="container">
       <div class="section-label">Service Details</div>
       <h1>Web Development</h1>
