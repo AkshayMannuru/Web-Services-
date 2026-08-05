@@ -8,6 +8,153 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<style>
+body[data-page="contact"] {
+  background: #050814;
+  color: #e5e7eb;
+}
+/* Navbar: transparent at top, light (index-like) when scrolled */
+body[data-page="contact"] .navbar {
+  background: transparent;
+  box-shadow: none;
+}
+body[data-page="contact"] .navbar.scrolled {
+  background: rgba(255,255,255,.95);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 var(--border);
+}
+body[data-page="contact"] .nav-links a {
+  color: #fff;
+}
+body[data-page="contact"] .navbar.scrolled .nav-links a {
+  color: #000;
+}
+body[data-page="contact"] .navbar.scrolled .logo-text {
+  color: #000;
+}
+body[data-page="contact"] .navbar.scrolled .nav-links a:hover,
+body[data-page="contact"] .navbar.scrolled .nav-links a.active {
+  color: #000;
+}
+body[data-page="contact"] .logo-text {
+  color: #000;
+}
+body[data-page="contact"] .logo-mark {
+  color: #fff;
+}
+body[data-page="contact"] .btn-nav,
+body[data-page="contact"] .btn-primary {
+  background: linear-gradient(135deg,#2563eb,#8b5cf6);
+}
+body[data-page="contact"] .page-hero {
+  background: #08122c;
+  color: #f8fafc;
+}
+body[data-page="contact"] .page-hero .section-label {
+  color: #60a5fa;
+}
+body[data-page="contact"] .section,
+body[data-page="contact"] section[style] {
+  background: #06101f !important;
+}
+body[data-page="contact"] .contact-info-block,
+body[data-page="contact"] .contact-form-card,
+body[data-page="contact"] .map-placeholder,
+body[data-page="contact"] footer {
+  background: rgba(10,16,31,.95) !important;
+  border-color: rgba(255,255,255,.08) !important;
+}
+body[data-page="contact"] .contact-info-block,
+body[data-page="contact"] .contact-form-card,
+body[data-page="contact"] .footer-col {
+  box-shadow: 0 20px 50px rgba(0,0,0,.35);
+}
+body[data-page="contact"] .contact-details span,
+body[data-page="contact"] .contact-detail-item strong,
+body[data-page="contact"] .section-title,
+body[data-page="contact"] .footer-col h4,
+body[data-page="contact"] p,
+body[data-page="contact"] .section-sub,
+body[data-page="contact"] .footer-bottom p,
+body[data-page="contact"] .faq-item .faq-a {
+  color: rgba(229,231,235,.9);
+}
+body[data-page="contact"] input,
+body[data-page="contact"] select,
+body[data-page="contact"] textarea {
+  background: rgba(255,255,255,.06);
+  color: #e5e7eb;
+  border: 1px solid rgba(255,255,255,.12);
+}
+body[data-page="contact"] input::placeholder,
+body[data-page="contact"] textarea::placeholder {
+  color: rgba(229,231,235,.55);
+}
+body[data-page="contact"] .wa-btn,
+body[data-page="contact"] .btn-primary {
+  box-shadow: 0 12px 30px rgba(37,99,255,.28);
+}
+body[data-page="contact"] .social-links a {
+  background: rgba(255,255,255,.08);
+  color: #fff;
+}
+body[data-page="contact"] .social-links a:hover {
+  filter: brightness(1.05);
+}
+body[data-page="contact"] .map-placeholder iframe {
+  background: #08101f;
+}
+body[data-page="contact"] .faq-item {
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  margin-bottom: 1rem;
+  padding: 1rem 1.25rem;
+}
+body[data-page="contact"] .faq-q {
+  color: #f8fafc;
+}
+body[data-page="contact"] .faq-a {
+  color: rgba(229,231,235,.75);
+}
+body[data-page="contact"] .faq-arrow {
+  color: rgba(203,213,225,.85);
+}
+body[data-page="contact"] .contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 20px;
+}
+body[data-page="contact"] .contact-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: .95rem 1rem;
+  background: rgba(255,255,255,.03);
+  border-radius: 16px;
+}
+body[data-page="contact"] .contact-detail-item .cd-icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  font-size: 1.1rem;
+}
+body[data-page="contact"] .contact-detail-item strong {
+  display: block;
+  color: #f8fafc;
+}
+body[data-page="contact"] .contact-detail-item span {
+  color: rgba(229,231,235,.75);
+}
+</style>
 </head>
 <body data-page="contact">
 
@@ -47,32 +194,35 @@
     </div>
   </section>
 
-  <section class="section" style="background:var(--bg);">
+  <section class="section" style="background:#06101f;">
     <div class="container">
       <div class="contact-grid">
         <div class="contact-info-block reveal">
           <h3>We'd Love to Hear From You</h3>
           <p>Have a project in mind? Just need some advice? Reach out through any of the channels below and our team will be happy to help.</p>
           <div class="contact-details">
-            <div class="contact-detail-item"><div class="cd-icon">📧</div><div><strong>Email Us</strong><span>hello@webcraftstudio.com</span></div></div>
-            <div class="contact-detail-item"><div class="cd-icon">📞</div><div><strong>Call Us</strong><span>+1 (555) 123-4567</span></div></div>
-            <div class="contact-detail-item"><div class="cd-icon">📍</div><div><strong>Our Office</strong><span>123 Digital Ave, Suite 4B, New York, NY 10001</span></div></div>
-            <div class="contact-detail-item"><div class="cd-icon">🕒</div><div><strong>Business Hours</strong><span>Mon – Fri: 9:00 AM – 6:00 PM EST</span></div></div>
+            <div class="contact-detail-item"><div class="cd-icon">📧</div><div><strong>Email Us</strong><span>info@localiqdigitalmedia.com</span></div></div>
+            <div class="contact-detail-item"><div class="cd-icon">📞</div><div><strong>Call Us</strong><span>+918121433370</span></div></div>
+            <div class="contact-detail-item"><div class="cd-icon">📍</div><div><strong>Our Office</strong><span>Patancheruvu</span></div></div>
+            <div class="contact-detail-item"><div class="cd-icon">🕒</div><div><strong>Business Hours</strong><span>Mon – Sat: 9:30 AM – 6:00 PM</span></div></div>
           </div>
-          <button class="wa-btn" onclick="window.open('https://wa.me/15551234567','_blank')">💬 Chat on WhatsApp</button>
+          <button class="wa-btn" onclick="window.open('https://wa.me/918121433370','_blank')">💬 Chat on WhatsApp</button>
           <div style="margin-top:2rem;">
             <div class="section-label" style="margin-bottom:.8rem;">Follow Us</div>
             <div class="social-links" style="justify-content:flex-start;">
-              <a href="#" style="background:var(--bg-soft);color:var(--text);">f</a>
-              <a href="#" style="background:var(--bg-soft);color:var(--text);">in</a>
-              <a href="#" style="background:var(--bg-soft);color:var(--text);">𝕏</a>
-              <a href="#" style="background:var(--bg-soft);color:var(--text);">Li</a>
+              <a href="#" style="background:#1877F2;color:#fff;">f</a>
+              <a href="#" style="background:#E4405F;color:#fff;">in</a>
+              <a href="#" style="background:#000;color:#fff;">𝕏</a>
+              <a href="#" style="background:#0A66C2;color:#fff;">Li</a>
             </div>
           </div>
         </div>
 
         <div class="contact-form-card reveal">
-          <h3>Request a Free Quote</h3>
+          <div class="contact-form-header">
+            <h3>Request a Free Quote</h3>
+            <button type="button" class="btn-outline" id="openModalBtn">Open Modal</button>
+          </div>
           <form id="contactForm" novalidate>
             <div class="form-row">
               <div class="form-group"><label>Your Name *</label><input type="text" placeholder="John Doe" required></div>
@@ -84,47 +234,68 @@
             </div>
             <div class="form-row">
               <div class="form-group"><label>Type of Website Needed *</label>
-                <select required>
+                <select class="js-custom-select" required>
                   <option value="" disabled selected>Select a type…</option>
                   <option>Business Website</option><option>E-commerce Store</option>
                   <option>Restaurant Website</option><option>Portfolio Website</option>
                   <option>Website Redesign</option><option>SEO Optimization</option>
-                  <option>Website Maintenance</option><option>Other / Not Sure</option>
+                  <option>Web Development</option>
+                  <option>Mobile App Development</option>
+                  <option>Software Development</option>
+                  <option>UI/UX Design</option>
+                  <option>Figma Design</option>
+                  <option>Digital Marketing</option>
+                  <option>Content Creation</option>
+                  <option>Software Testing</option>
+                  <option>Data Analysis</option>
+                <option>Website Maintenance</option><option>Other / Not Sure</option>
+
                 </select>
               </div>
               <div class="form-group"><label>Your Budget Range</label>
-                <select>
+                <select class="js-custom-select">
                   <option value="" disabled selected>Select a range…</option>
-                  <option>Under $300</option><option>$300 – $500</option>
-                  <option>$500 – $1,000</option><option>$1,000 – $2,000</option>
-                  <option>$2,000+</option><option>I'm not sure yet</option>
+                  <option>Under ₹30,000</option><option>₹30,000 – ₹50,000</option>
+                  <option>₹50,000 – ₹1,00,000</option><option>₹1,00,000 – ₹2,00,000</option>
+                  <option>₹2,00,000+</option><option>I'm not sure yet</option>
                 </select>
               </div>
             </div>
             <div class="form-group"><label>Tell Us About Your Project *</label><textarea placeholder="Describe your business, what kind of website you need, any specific features, pages, or design preferences…" required></textarea></div>
             <button type="submit" class="btn-primary" style="width:100%;justify-content:center;padding:1rem;font-size:1rem;">Send My Request <span class="arrow">→</span></button>
-            <p style="font-size:.78rem;color:var(--text-muted);text-align:center;margin-top:1rem;">We'll respond within 24 hours with a free, no-obligation quote.</p>
+            <p style="font-size:.78rem;color:rgba(229,231,235,.7);text-align:center;margin-top:1rem;">We'll respond within 24 hours with a free, no-obligation quote.</p>
           </form>
         </div>
       </div>
     </div>
   </section>
 
-  <section style="background:var(--bg-soft);padding:4rem 0;">
+  <div class="modal-overlay" id="responsiveModal">
+    <div class="modal">
+      <button type="button" class="modal-close" id="closeModalBtn">×</button>
+      <h3>Responsive Modal</h3>
+      <p>This is a responsive modal overlay built for mobile and desktop. It adapts to different view widths and stays centered.</p>
+    </div>
+  </div>
+  <section style="background:#06101f;padding:4rem 0;">
     <div class="container">
-      <h3 style="font-family:var(--font-display);font-weight:700;font-size:1.3rem;margin-bottom:1.5rem;">Find Our Office</h3>
-      <div class="map-placeholder">
-        <div class="map-icon">🗺️</div>
-        <strong>123 Digital Ave, Suite 4B</strong>
-        <span style="font-size:.9rem;color:var(--text-muted);">New York, NY 10001</span>
-        <p style="font-size:.82rem;color:var(--text-muted);max-width:300px;text-align:center;">Replace this with your Google Maps embed iframe.</p>
+      <h3 style="font-family:var(--font-display);font-weight:700;font-size:1.3rem;margin-bottom:1.5rem;color:#fff;">Find Our Office</h3>
+      <div class="map-placeholder" style="padding:0;overflow:hidden;min-height:420px;">
+        <iframe
+          src="https://maps.google.com/maps?q=Krushi%20Defense%20Colony%2C%20Patancheruvu%2C%20Hyderabad&t=&z=15&ie=UTF8&iwloc=&output=embed"
+          width="100%"
+          height="420"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </section>
 
-  <section class="section" style="background:var(--bg);">
+  <section class="section" style="background:#06101f;">
     <div class="container" style="max-width:720px;">
-      <div class="section-label">Common Questions</div>
+      <div class="section-label" style="color:#60a5fa;">Common Questions</div>
       <h2 class="section-title">FAQs</h2>
       <div id="faqContainer">
         <div class="faq-item"><button class="faq-q">How long does it take to build my website? <span class="faq-arrow">▾</span></button><div class="faq-a">Most projects are completed within 7–14 business days. Starter websites take 5–7 days; business and premium sites take 10–14 days depending on complexity and feedback speed.</div></div>
@@ -151,10 +322,10 @@
         </a>
         <p>Affordable, professional websites for small businesses. We help local businesses grow online.</p>
         <div class="social-links">
-          <a href="#" aria-label="Facebook">f</a>
-          <a href="#" aria-label="Instagram">in</a>
-          <a href="#" aria-label="Twitter">𝕏</a>
-          <a href="#" aria-label="LinkedIn">Li</a>
+          <a href="https://www.facebook.com/WebCraftStudio" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a>
+          <a href="https://www.instagram.com/WebCraftStudio" target="_blank" rel="noopener noreferrer" aria-label="Instagram">in</a>
+          <a href="https://twitter.com/WebCraftStudio" target="_blank" rel="noopener noreferrer" aria-label="Twitter">𝕏</a>
+          <a href="https://www.linkedin.com/company/WebCraftStudio" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">Li</a>
         </div>
       </div>
       <div class="footer-col">
@@ -180,10 +351,10 @@
       <div class="footer-col">
         <h4>Contact</h4>
         <ul class="contact-info">
-          <li>📧 hello@webcraftstudio.com</li>
-          <li>📞 +1 (555) 123-4567</li>
-          <li>📍 123 Digital Ave, NYC</li>
-          <li><span class="whatsapp-link" onclick="window.open('https://wa.me/15551234567','_blank')">💬 WhatsApp Us</span></li>
+          <li>📧 info@localiqdigitalmedia.com</li>
+          <li>📞 +918121433370</li>
+          <li>📍 Patancheruvu</li>
+          <li><span class="whatsapp-link" onclick="window.open('https://wa.me/918121433370','_blank')">💬 WhatsApp Us</span></li>
         </ul>
       </div>
     </div>
