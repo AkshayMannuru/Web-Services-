@@ -164,6 +164,7 @@ p, li, span, div {
 .btn-primary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: .5rem;
   background: var(--gradient);
   color: #fff;
@@ -1155,18 +1156,49 @@ p, li, span, div {
   border: 1px solid var(--border);
   transition:
     transform .4s var(--ease-spring),
-    box-shadow .4s ease;
+    box-shadow .4s ease,
+    border-color .3s;
   will-change: transform;
   position: relative;
   cursor: default;
+}
+
+.portfolio-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--gradient);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity .4s ease;
+  pointer-events: none;
+}
+
+.portfolio-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0,87,255,.07), transparent 45%);
+  opacity: 0;
+  transition: opacity .35s;
+  pointer-events: none;
+  border-radius: inherit;
 }
 
 .portfolio-card.large { grid-row: span 2; }
 
 .portfolio-card:hover {
   transform: translateY(-10px) scale(1.015);
-  box-shadow: var(--shadow-xl);
+  box-shadow: 0 0 0 1px rgba(37,99,255,.35), 0 20px 60px rgba(0,87,255,.14), 0 4px 16px rgba(0,0,0,.06);
+  border-color: rgba(37,99,255,.35);
 }
+
+.portfolio-card:hover::before { opacity: 1; }
+.portfolio-card:hover::after  { opacity: 1; }
 
 .portfolio-img {
   width: 100%;
@@ -2191,6 +2223,10 @@ body[data-page="contact"] .btn-outline:focus-visible {
 body[data-page="contact"] #openModalBtn {
   color: #fff !important;
 }
+body[data-page="contact"] #openModalBtn:hover,
+body[data-page="contact"] #openModalBtn:focus-visible {
+  color: #1877F2 !important;
+}
 
 @media (max-width: 768px) {
   .contact-form-header { flex-direction: column; align-items: stretch; }
@@ -2460,6 +2496,27 @@ h1, h2, h3, h4, h5, h6,
   .testimonial-card { min-width: calc(100% - 1.5rem); }
   .shape-ring, .shape-ring-inner, .shape-dot-cluster { display: none; }
 
+  .cta-content { text-align: center; }
+  .cta-actions { justify-content: center; }
+
+  .portfolio-filter {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: .5rem;
+    margin-bottom: .5rem;
+  }
+  .portfolio-filter::-webkit-scrollbar { display: none; }
+  .portfolio-filter .filter-btn {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    min-width: max-content;
+    padding: .5rem 1rem;
+  }
+
   .scroll-top-btn { bottom: 1.25rem; right: 1.25rem; }
 }
 @media (max-width: 1440px) {
@@ -2497,6 +2554,7 @@ h1, h2, h3, h4, h5, h6,
   .footer-bottom { flex-direction:column; gap:.5rem; text-align:center; }
   .service-detail-item { grid-template-columns:1fr; }
   .hero-scroll { display:none; }
+  .cta-content { text-align: center; }
   .cta-actions { flex-direction:column; align-items:stretch; text-align:center; }
   .team-grid { grid-template-columns:1fr 1fr; }
   .stats-row { grid-template-columns:1fr 1fr; }
