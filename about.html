@@ -209,8 +209,90 @@
         font-size: 1.8rem;
       }
 
-      .mv-card {
-        padding: 1.5rem;
+      /* Team Section Layout & Dark Theme Card Styling */
+      .team-grid {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 1.5rem !important;
+        width: 100% !important;
+      }
+
+      .team-card {
+        flex: 0 0 calc(25% - 1.2rem) !important;
+        max-width: calc(25% - 1.2rem) !important;
+        background: #11141a !important;
+        border: 1px solid var(--border, rgba(255, 255, 255, 0.08)) !important;
+        border-radius: 12px !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        box-sizing: border-box !important;
+      }
+
+      @media (max-width: 1200px) {
+        .team-card {
+          flex: 0 0 calc(33.333% - 1.2rem) !important;
+          max-width: calc(33.333% - 1.2rem) !important;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .team-card {
+          flex: 0 0 calc(50% - 1.2rem) !important;
+          max-width: calc(50% - 1.2rem) !important;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .team-card {
+          flex: 0 0 100% !important;
+          max-width: 100% !important;
+        }
+      }
+
+      .team-photo {
+        height: 270px !important;
+        max-height: 270px !important;
+        width: 100% !important;
+        overflow: hidden !important;
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: #1a1d24 !important;
+        flex-shrink: 0 !important;
+      }
+
+      .team-photo img {
+        width: 100% !important;
+        height: 270px !important;
+        max-height: 270px !important;
+        object-fit: cover !important;
+        object-position: center top !important;
+        display: block !important;
+      }
+
+      .team-info {
+        padding: 1.4rem 1rem !important;
+        background: #11141a !important;
+        text-align: center !important;
+        width: 100% !important;
+        position: relative !important;
+        z-index: 5 !important;
+        flex-grow: 1 !important;
+      }
+
+      .team-info h4 {
+        color: #ffffff !important;
+        font-size: 1.05rem !important;
+        font-weight: 700 !important;
+        margin-bottom: 0.25rem !important;
+      }
+
+      .team-info span {
+        color: #94a3b8 !important;
+        font-size: 0.85rem !important;
       }
     }
   </style>
@@ -227,11 +309,11 @@
         <img src="logo.png" alt="LocaliQ Digital Media" class="logo-img">
       </a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="index.html"    data-page="home"><i class="bi bi-house-door"></i> Home</a></li>
-        <li><a href="about.html"    data-page="about"><i class="bi bi-info-circle"></i> About</a></li>
+        <li><a href="index.html" data-page="home"><i class="bi bi-house-door"></i> Home</a></li>
+        <li><a href="about.html" data-page="about"><i class="bi bi-info-circle"></i> About</a></li>
         <li><a href="services.html" data-page="services"><i class="bi bi-grid-fill"></i> Services</a></li>
-
-        <li><a href="contact.html"  data-page="contact"><i class="bi bi-envelope-fill"></i> Contact</a></li>
+        <li><a href="portfolio.html" data-page="portfolio"><i class="bi bi-collection-fill"></i> Portfolio</a></li>
+        <li><a href="contact.html" data-page="contact"><i class="bi bi-envelope-fill"></i> Contact</a></li>
       </ul>
       <a class="btn-nav" href="contact.html">Request a Website</a>
       <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -260,7 +342,7 @@
       <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
 
       <!-- Decorative shapes -->
-      <div class="hero-shape shape-ring"       aria-hidden="true"></div>
+      <div class="hero-shape shape-ring" aria-hidden="true"></div>
       <div class="hero-shape shape-ring-inner" aria-hidden="true"></div>
       <div class="hero-shape shape-dot-cluster" aria-hidden="true">
         <span></span><span></span><span></span><span></span>
@@ -274,7 +356,8 @@
       <div class="container page-hero-content">
         <div class="section-label" style="color:#60a5fa;">About Us</div>
         <h1>We're on a Mission to Help<br><span class="gradient-text">Every Business Thrive</span></h1>
-        <p>LocaliQ Digital Media delivers world-class web solutions designed for businesses of all sizes — from ambitious startups to scaling enterprises.</p>
+        <p>LocaliQ Digital Media delivers world-class web solutions designed for businesses of all sizes — from
+          ambitious startups to scaling enterprises.</p>
       </div>
     </section>
 
@@ -282,14 +365,22 @@
       <div class="container">
         <div class="about-grid">
           <div class="about-visual reveal">
-            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=100&w=3840&auto=format&fit=crop" alt="Our Story illustration">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=100&w=3840&auto=format&fit=crop"
+              alt="Our Story illustration">
           </div>
           <div class="about-text reveal">
             <div class="section-label">Our Story</div>
             <h2 class="section-title">Empowering Businesses<br>of Every Scale</h2>
-            <p>LocaliQ Digital Media was founded in 2020 with a bold mission: to bridge the digital gap for organizations of all sizes. From local startups and small retail shops to rapidly scaling mid-market enterprises and established brands, we believe every business deserves a high-performance, premium digital presence.</p>
-            <p>Rather than catering only to select tiers, we built a modular agency model. We deliver high-end custom web design, complex web applications, and marketing integrations that suit the precise scale of your business—without the bloated retainers of traditional agencies.</p>
-            <p>Four years later, we've launched over 150 digital platforms across 20+ industries. Whether you are an entrepreneur launching your first venture or a corporate team upgrading your legacy systems, we scale our solutions to fuel your growth.</p>
+            <p>LocaliQ Digital Media was founded in 2020 with a bold mission: to bridge the digital gap for
+              organizations of all sizes. From local startups and small retail shops to rapidly scaling mid-market
+              enterprises and established brands, we believe every business deserves a high-performance, premium digital
+              presence.</p>
+            <p>Rather than catering only to select tiers, we built a modular agency model. We deliver high-end custom
+              web design, complex web applications, and marketing integrations that suit the precise scale of your
+              business—without the bloated retainers of traditional agencies.</p>
+            <p>Four years later, we've launched over 150 digital platforms across 20+ industries. Whether you are an
+              entrepreneur launching your first venture or a corporate team upgrading your legacy systems, we scale our
+              solutions to fuel your growth.</p>
           </div>
         </div>
       </div>
@@ -301,7 +392,9 @@
           <div class="mv-card mission">
             <div style="font-size:2rem; color: #3b82f6;"><i class="bi bi-bullseye"></i></div>
             <h3>Our Mission</h3>
-            <p>To empower businesses of all sizes with a professional, high-performance online presence. From startups to growing enterprises, we believe that premium quality design and software development should be accessible to every business.</p>
+            <p>To empower businesses of all sizes with a professional, high-performance online presence. From startups
+              to growing enterprises, we believe that premium quality design and software development should be
+              accessible to every business.</p>
           </div>
           <div class="mv-card vision">
             <div style="font-size:2rem; color: #8b5cf6;"><i class="bi bi-eye-fill"></i></div>
@@ -320,42 +413,48 @@
         <div class="values-grid">
           <div class="value-card reveal">
             <span class="value-icon">
-              <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=100&w=3840&auto=format&fit=crop" alt="Client First illustration">
+              <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=100&w=3840&auto=format&fit=crop"
+                alt="Client First illustration">
             </span>
             <h4>Client First</h4>
             <p>Your success is our success. We listen carefully and build exactly what your business needs.</p>
           </div>
           <div class="value-card reveal">
             <span class="value-icon">
-              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=100&w=3840&auto=format&fit=crop" alt="Quality Always illustration">
+              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=100&w=3840&auto=format&fit=crop"
+                alt="Quality Always illustration">
             </span>
             <h4>Quality Always</h4>
             <p>We never cut corners. Every pixel, every line of code is crafted with care and intention.</p>
           </div>
           <div class="value-card reveal">
             <span class="value-icon">
-              <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=100&w=3840&auto=format&fit=crop" alt="Transparent Communication illustration">
+              <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=100&w=3840&auto=format&fit=crop"
+                alt="Transparent Communication illustration">
             </span>
             <h4>Transparent Communication</h4>
             <p>No surprises. We keep you in the loop at every step from concept to launch.</p>
           </div>
           <div class="value-card reveal">
             <span class="value-icon">
-              <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=100&w=3840&auto=format&fit=crop" alt="Speed & Efficiency illustration">
+              <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=100&w=3840&auto=format&fit=crop"
+                alt="Speed & Efficiency illustration">
             </span>
             <h4>Speed & Efficiency</h4>
             <p>We respect your time. Fast delivery without sacrificing the quality you deserve.</p>
           </div>
           <div class="value-card reveal">
             <span class="value-icon">
-              <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=100&w=3840&auto=format&fit=crop" alt="Accessibility illustration">
+              <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=100&w=3840&auto=format&fit=crop"
+                alt="Accessibility illustration">
             </span>
             <h4>Accessibility</h4>
             <p>We build websites that work for everyone, on every device and every browser.</p>
           </div>
           <div class="value-card reveal">
             <span class="value-icon">
-              <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=100&w=3840&auto=format&fit=crop" alt="Continuous Learning illustration">
+              <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=100&w=3840&auto=format&fit=crop"
+                alt="Continuous Learning illustration">
             </span>
             <h4>Continuous Learning</h4>
             <p>The web evolves fast. We stay on top of the latest trends, tools, and best practices.</p>
@@ -370,31 +469,45 @@
         <h2 class="section-title">Meet Our Team</h2>
         <div class="team-grid">
           <div class="team-card reveal">
-            <div class="team-photo" style="background:linear-gradient(135deg,#eff6ff,#bfdbfe);"><i
-                class="bi bi-person-workspace" style="color:#0057ff"></i></div>
+            <div class="team-photo"><img src="images/souji3.jpg" alt="Team member photo"></div>
             <div class="team-info">
-              <h4>Alex Rivera</h4><span>Co-Founder & Lead Developer</span>
+              <h4>Soujanya Veginati</h4><span>Fullstack Developer</span>
             </div>
           </div>
           <div class="team-card reveal">
-            <div class="team-photo" style="background:linear-gradient(135deg,#f5f3ff,#ddd6fe);"><i
-                class="bi bi-palette-fill" style="color:#7c3aed"></i></div>
+            <div class="team-photo"><img src="images/sravani.jpg" alt="Team member photo"></div>
             <div class="team-info">
-              <h4>Priya Singh</h4><span>Co-Founder & Head of Design</span>
+              <h4>Sravani Surampalli</h4><span>Fullstack Developer</span>
             </div>
           </div>
           <div class="team-card reveal">
-            <div class="team-photo" style="background:linear-gradient(135deg,#f0fdf4,#bbf7d0);"><i
-                class="bi bi-graph-up-arrow" style="color:#16a34a"></i></div>
+            <div class="team-photo"><img src="images/sankar.jpg" alt="Team member photo"></div>
             <div class="team-info">
-              <h4>Marcus Johnson</h4><span>SEO & Growth Strategist</span>
+              <h4>Shankar Pagidiboina</h4><span>Java Developer</span>
             </div>
           </div>
           <div class="team-card reveal">
-            <div class="team-photo" style="background:linear-gradient(135deg,#fff7ed,#fed7aa);"><i
-                class="bi bi-briefcase-fill" style="color:#ea580c"></i></div>
+            <div class="team-photo"><img src="images/sandhyag.jpg" alt="Team member photo"></div>
             <div class="team-info">
-              <h4>Sofia Chen</h4><span>Client Success Manager</span>
+              <h4>Sandhya Gudisa</h4><span>Fullstack Developer</span>
+            </div>
+          </div>
+          <div class="team-card reveal">
+            <div class="team-photo"><img src="images/ramya1.jpg" alt="Team member photo"></div>
+            <div class="team-info">
+              <h4>Sai Ramya</h4><span>Backend Developer</span>
+            </div>
+          </div>
+          <div class="team-card reveal">
+            <div class="team-photo"><img src="images/venkat.jpg" alt="Team member photo"></div>
+            <div class="team-info">
+              <h4>Venkat</h4><span>Testing</span>
+            </div>
+          </div>
+          <div class="team-card reveal">
+            <div class="team-photo"><img src="images/shiva1.jpg" alt="Team member photo"></div>
+            <div class="team-info">
+              <h4>Shiva Shankar</h4><span>Designer</span>
             </div>
           </div>
         </div>
@@ -449,9 +562,12 @@
           </a>
           <p>Affordable, professional web solutions for businesses of all sizes. We help businesses grow online.</p>
           <div class="social-links">
-            <a href="https://www.facebook.com/profile.php?id=61559983935950" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-            <a href="https://www.instagram.com/localiq1/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="https://x.com/LocaliqM" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61559983935950" target="_blank" rel="noopener noreferrer"
+              aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/localiq1/" target="_blank" rel="noopener noreferrer"
+              aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://x.com/LocaliqM" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X"><i
+                class="bi bi-twitter-x"></i></a>
             <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
