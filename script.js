@@ -696,7 +696,7 @@ if (contactForm) {
 
     // Format email subject and body
     const subject = encodeURIComponent(`New Project Quote Request - ${businessName}`);
-    const emailBody = `Hello WebCraft Studio,
+    const emailBody = `Hello LocaliQ Digital Media,
 
 I would like to request a free quote for my project. Below are the details:
 

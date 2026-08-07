@@ -68,8 +68,8 @@
   --ease-in-out:     cubic-bezier(0.65, 0, 0.35, 1);
 
   /* Layout */
-  --nav-h:        72px;
-  --container:    1160px;
+  --nav-h:        100px;
+  --container:    1280px;
   --section-pad:  3.5rem;
 
   /* Typography */
@@ -374,12 +374,12 @@ p, li, span, div {
 }
 
 .navbar.scrolled {
-  background: rgba(255, 255, 255, 0.96) !important;
+  background: rgba(255, 255, 255, 0.97) !important;
   backdrop-filter: blur(16px) saturate(1.8) !important;
   -webkit-backdrop-filter: blur(16px) saturate(1.8) !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 0 rgba(0, 0, 0, 0.06) !important;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
-  height: 64px;
+  height: 100px !important;
 }
 
 .navbar.nav-hidden {
@@ -389,7 +389,7 @@ p, li, span, div {
 .nav-inner {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 2.5rem;
   height: 100%;
   display: flex;
   align-items: center;
@@ -415,17 +415,43 @@ p, li, span, div {
 .logo:hover { opacity: .85; }
 
 .logo-mark {
-  width: 36px; height: 36px;
+  width: 42px; height: 42px;
   background: var(--gradient);
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
-  font-size: 1rem;
+  border-radius: 12px;
+  font-size: 1.15rem;
   font-weight: 800;
   box-shadow: 0 4px 14px rgba(0,87,255,.35);
   transition: transform .3s var(--ease-spring), box-shadow .3s;
+}
+
+/* New logo image */
+.logo-img {
+  height: 82px;
+  width: auto;
+  max-width: 360px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+  transition: all 0.25s ease;
+}
+.navbar.scrolled .logo-img {
+  height: 82px;
+  max-width: 360px;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.12));
+}
+.logo:hover .logo-img {
+  opacity: 0.95;
+  transform: scale(1.03);
+}
+/* Footer logo */
+footer .logo-img {
+  height: 76px;
+  max-width: 340px;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
 }
 
 .logo:hover .logo-mark {
