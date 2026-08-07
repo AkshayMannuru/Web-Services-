@@ -11,6 +11,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="styles.css">
   <style>
     /* Internal CSS for Services Page */
@@ -118,24 +119,6 @@
 
     .service-detail-item:hover::after {
       opacity: 1;
-    }
-
-    /* Icon styling */
-    .service-detail-icon {
-      width: 48px !important;
-      height: 48px !important;
-      background: transparent !important;
-      font-size: 2.2rem !important;
-      margin-bottom: 1.5rem !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: flex-start !important;
-      transition: none !important;
-      transform: none !important;
-    }
-
-    .service-detail-item:hover .service-detail-icon {
-      transform: none !important;
     }
 
     /* Text styling */
@@ -316,7 +299,7 @@
       transform: translate(-50%, -50%);
       width: 100px;
       height: 100px;
-      background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=200&auto=format&fit=crop');
+      background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=100&w=3840&auto=format&fit=crop');
       background-size: cover;
       background-position: center;
       border: 1px solid rgba(255, 255, 255, 0.2);
@@ -548,12 +531,11 @@
         <span class="logo-text">WebCraft<em>Studio</em></span>
       </a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="index.html" data-page="home">Home</a></li>
-        <li><a href="about.html"    data-page="about">About</a></li>
-        <li><a href="services.html" data-page="services">Services</a></li>
-        <li><a href="portfolio.html" data-page="portfolio">Portfolio</a></li>
-        
-        <li><a href="contact.html" data-page="contact">Contact</a></li>
+        <li><a href="index.html"    data-page="home"><i class="bi bi-house-door"></i> Home</a></li>
+        <li><a href="about.html"    data-page="about"><i class="bi bi-info-circle"></i> About</a></li>
+        <li><a href="services.html" data-page="services"><i class="bi bi-grid-fill"></i> Services</a></li>
+        <li><a href="portfolio.html" data-page="portfolio"><i class="bi bi-collection-fill"></i> Portfolio</a></li>
+        <li><a href="contact.html"  data-page="contact"><i class="bi bi-envelope-fill"></i> Contact</a></li>
       </ul>
       <a class="btn-nav" href="contact.html">Request a Website</a>
       <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -613,7 +595,9 @@
       <div class="container">
         <div class="service-detail-grid">
           <div class="service-detail-item reveal">
-            <div class="service-detail-icon">🌐</div>
+            <div class="service-detail-icon">
+              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=100&w=3840&auto=format&fit=crop" alt="Web Development illustration">
+            </div>
             <div class="service-detail-text">
               <h3>Web Development</h3>
               <p>There are many variations variations of passages of Lorem available.</p><a href="service-details.html?service=Web%20Development"
@@ -621,7 +605,9 @@
             </div>
           </div>
           <div class="service-detail-item reveal">
-            <div class="service-detail-icon">📱</div>
+            <div class="service-detail-icon">
+              <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=100&w=3840&auto=format&fit=crop" alt="Mobile App Development illustration">
+            </div>
             <div class="service-detail-text">
               <h3>Mobile App Development</h3>
               <p>There are many variations variations of passages of Lorem available.</p><a href="service-details.html?service=Mobile%20App%20Development"
@@ -629,7 +615,9 @@
             </div>
           </div>
           <div class="service-detail-item reveal">
-            <div class="service-detail-icon">💻</div>
+            <div class="service-detail-icon">
+              <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=100&w=3840&auto=format&fit=crop" alt="Software Development illustration">
+            </div>
             <div class="service-detail-text">
               <h3>Software Development</h3>
               <p>There are many variations variations of passages of Lorem available.</p><a href="service-details.html?service=Software%20Development"
@@ -637,7 +625,9 @@
             </div>
           </div>
           <div class="service-detail-item reveal">
-            <div class="service-detail-icon">✨</div>
+            <div class="service-detail-icon">
+              <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=100&w=3840&auto=format&fit=crop" alt="UI/UX Design illustration">
+            </div>
             <div class="service-detail-text">
               <h3>UI/UX Design</h3>
               <p>There are many variations variations of passages of Lorem available.</p><a href="service-details.html?service=UI/UX%20Design"
@@ -645,7 +635,9 @@
             </div>
           </div>
           <div class="service-detail-item reveal">
-            <div class="service-detail-icon">🎨</div>
+            <div class="service-detail-icon">
+              <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?q=100&w=3840&auto=format&fit=crop" alt="Figma Design illustration">
+            </div>
             <div class="service-detail-text">
               <h3>Figma Design</h3>
               <p>There are many variations variations of passages of Lorem available.</p><a href="service-details.html?service=Figma%20Design"
@@ -653,7 +645,9 @@
             </div>
           </div>
           <div class="service-detail-item reveal">
-            <div class="service-detail-icon">📈</div>
+            <div class="service-detail-icon">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=100&w=3840&auto=format&fit=crop" alt="Digital Marketing illustration">
+            </div>
             <div class="service-detail-text">
               <h3>Digital Marketing</h3>
               <p>There are many variations variations of passages of Lorem available.</p><a href="service-details.html?service=Digital%20Marketing"
@@ -661,7 +655,9 @@
             </div>
           </div>
           <div class="service-detail-item reveal">
-            <div class="service-detail-icon">✍️</div>
+            <div class="service-detail-icon">
+              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=100&w=3840&auto=format&fit=crop" alt="Content Creation illustration">
+            </div>
             <div class="service-detail-text">
               <h3>Content Creation</h3>
               <p>There are many variations variations of passages of Lorem available.</p><a href="service-details.html?service=Content%20Creation"
@@ -669,21 +665,16 @@
             </div>
           </div>
           <div class="service-detail-item reveal">
-            <div class="service-detail-icon">🧪</div>
+            <div class="service-detail-icon">
+              <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=100&w=3840&auto=format&fit=crop" alt="Software Testing illustration">
+            </div>
             <div class="service-detail-text">
               <h3>Software Testing</h3>
               <p>There are many variations variations of passages of Lorem available.</p><a href="service-details.html?service=Software%20Testing"
                 class="discover-btn">Discover services &rarr;</a>
             </div>
           </div>
-          <div class="service-detail-item reveal">
-            <div class="service-detail-icon">📊</div>
-            <div class="service-detail-text">
-              <h3>Data Analysis</h3>
-              <p>There are many variations variations of passages of Lorem available.</p><a href="service-details.html?service=Data%20Analysis"
-                class="discover-btn">Discover services &rarr;</a>
-            </div>
-          </div>
+
         </div>
       </div>
     </section>
@@ -714,7 +705,7 @@
 
           <!-- Tech Pills Right (Replaced with Image) -->
           <div class="tech-image-container" style="display: flex; align-items: center; justify-content: center;">
-            <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?q=80&w=2000&auto=format&fit=crop"
+            <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?q=100&w=3840&auto=format&fit=crop"
               alt="Tech Stack Image"
               style="max-width: 100%; height: auto; border-radius: 16px; box-shadow: 0 15px 40px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.05);">
           </div>
@@ -746,12 +737,12 @@
             <span class="logo-mark">W</span>
             <span class="logo-text">WebCraft<em>Studio</em></span>
           </a>
-          <p>Affordable, professional websites for small businesses. We help local businesses grow online.</p>
+          <p>Affordable, professional web solutions for businesses of all sizes. We help businesses grow online.</p>
           <div class="social-links">
-            <a href="#" aria-label="Facebook">f</a>
-            <a href="#" aria-label="Instagram">in</a>
-            <a href="#" aria-label="Twitter">𝕏</a>
-            <a href="#" aria-label="LinkedIn">Li</a>
+            <a href="https://www.facebook.com/profile.php?id=61559983935950" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/localiq1/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://x.com/LocaliqM" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
         <div class="footer-col">
@@ -777,11 +768,10 @@
         <div class="footer-col">
           <h4>Contact</h4>
           <ul class="contact-info">
-            <li>📧 hello@webcraftstudio.com</li>
-            <li>📞 +1 (555) 123-4567</li>
-            <li>📍 123 Digital Ave, NYC</li>
-            <li><span class="whatsapp-link" onclick="window.open('https://wa.me/15551234567','_blank')">💬 WhatsApp
-                Us</span></li>
+            <li>📧 info@localiqdigitalmedia.com</li>
+            <li>📞 +918121433370</li>
+            <li>📍 Patancheruvu</li>
+            <li><span class="whatsapp-link" onclick="window.open('https://wa.me/918121433370','_blank')">💬 WhatsApp Us</span></li>
           </ul>
         </div>
       </div>

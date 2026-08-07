@@ -161,8 +161,25 @@ const navbar   = qs('#navbar');
 const hamburger = qs('#hamburger');
 const navLinks  = qs('#navLinks');
 
+let lastScrollY = window.scrollY;
+
 window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 20);
+  const currentScrollY = window.scrollY;
+  
+  if (currentScrollY <= 20) {
+    // At the top: transparent, visible
+    navbar.classList.remove('scrolled');
+    navbar.classList.remove('nav-hidden');
+  } else if (currentScrollY > lastScrollY) {
+    // Scrolling down: hide the navbar
+    navbar.classList.add('nav-hidden');
+  } else {
+    // Scrolling up: show the navbar with white background
+    navbar.classList.remove('nav-hidden');
+    navbar.classList.add('scrolled');
+  }
+  
+  lastScrollY = currentScrollY;
   updateScrollTopBtn();
 }, { passive: true });
 
@@ -370,10 +387,10 @@ if (statsSection) {
 })();
 
 /* ============================================================
-   CARD SPOTLIGHT — mouse-position glow inside cards
+   CARD SPOTLIGHT & 3D TILT — premium micro-animations
    ============================================================ */
-(function initSpotlight() {
-  if (isTouchDevice()) return;
+(function initSpotlightAndTilt() {
+  if (isTouchDevice() || prefersReducedMotion()) return;
 
   qsa('.service-card').forEach(card => {
     card.addEventListener('mousemove', (e) => {
@@ -382,6 +399,18 @@ if (statsSection) {
       const y = ((e.clientY - rect.top)  / rect.height) * 100;
       card.style.setProperty('--mouse-x', `${x}%`);
       card.style.setProperty('--mouse-y', `${y}%`);
+
+      // 3D Tilt calculation (max 10 degrees tilt)
+      const tiltX = -((e.clientY - rect.top) / rect.height - 0.5) * 10;
+      const tiltY = ((e.clientX - rect.left) / rect.width - 0.5) * 10;
+      
+      // Update transform style inline with scale & lift
+      card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-8px) scale(1.015)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      // Smoothly reset tilt and positioning when cursor leaves card
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) scale(1)';
     });
   });
 })();
@@ -397,9 +426,12 @@ if (statsSection) {
       const rect   = el.getBoundingClientRect();
       const cx     = rect.left + rect.width  / 2;
       const cy     = rect.top  + rect.height / 2;
-      const dx     = (e.clientX - cx) * 0.28;
-      const dy     = (e.clientY - cy) * 0.28;
-      el.style.transform = `translate3d(${dx}px, ${dy}px, 0) scale(1.04)`;
+      // Clamped magnetic movement so it stays comfortably within bounds without overlapping adjacent buttons
+      const rawDx  = (e.clientX - cx) * 0.14;
+      const rawDy  = (e.clientY - cy) * 0.14;
+      const dx     = Math.max(-8, Math.min(8, rawDx));
+      const dy     = Math.max(-6, Math.min(6, rawDy));
+      el.style.transform = `translate3d(${dx}px, ${dy}px, 0) scale(1.02)`;
     });
 
     el.addEventListener('mouseleave', () => {
@@ -594,20 +626,126 @@ if (contactForm) {
   contactForm.addEventListener('submit', e => {
     e.preventDefault();
     const btn = contactForm.querySelector('button[type="submit"]');
-    btn.textContent = 'Sending…';
+
+    // Clear previous error states
+    contactForm.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
+
+    // Gather inputs
+    const nameInput = contactForm.querySelectorAll('input[type="text"]')[0];
+    const businessNameInput = contactForm.querySelectorAll('input[type="text"]')[1];
+    const phoneInput = contactForm.querySelector('input[type="tel"]');
+    const emailInput = contactForm.querySelector('input[type="email"]');
+    const typeSelect = contactForm.querySelectorAll('select')[0];
+    const budgetSelect = contactForm.querySelectorAll('select')[1];
+    const projectDescInput = contactForm.querySelector('textarea');
+
+    // Validation checks
+    let isValid = true;
+    if (!nameInput.value.trim()) {
+      nameInput.classList.add('invalid');
+      isValid = false;
+    }
+    if (!businessNameInput.value.trim()) {
+      businessNameInput.classList.add('invalid');
+      isValid = false;
+    }
+    if (!phoneInput.value.trim()) {
+      phoneInput.classList.add('invalid');
+      isValid = false;
+    }
+    if (!emailInput.value.trim() || !emailInput.value.includes('@')) {
+      emailInput.classList.add('invalid');
+      isValid = false;
+    }
+    if (!typeSelect.value) {
+      const trigger = typeSelect.closest('.custom-select') ? typeSelect.closest('.custom-select').querySelector('.custom-select__trigger') : null;
+      if (trigger) trigger.classList.add('invalid');
+      isValid = false;
+    }
+    if (!projectDescInput.value.trim() || projectDescInput.value.trim().length < 5) {
+      projectDescInput.classList.add('invalid');
+      isValid = false;
+    }
+
+    if (!isValid) {
+      // Setup listeners to remove invalid state on user interaction
+      contactForm.querySelectorAll('input, textarea').forEach(el => {
+        el.addEventListener('input', () => el.classList.remove('invalid'), { once: true });
+      });
+      document.querySelectorAll('.custom-select__option').forEach(opt => {
+        opt.addEventListener('click', () => {
+          const trigger = opt.closest('.custom-select').querySelector('.custom-select__trigger');
+          if (trigger) trigger.classList.remove('invalid');
+        }, { once: true });
+      });
+      return;
+    }
+
+    btn.textContent = 'Preparing Gmail…';
     btn.disabled = true;
 
+    // Gather values for submission
+    const name = nameInput.value;
+    const businessName = businessNameInput.value;
+    const phone = phoneInput.value;
+    const email = emailInput.value;
+    
+    const websiteType = typeSelect.value || 'Not Specified';
+    const budgetRange = budgetSelect.value || 'Not Specified';
+    const projectDesc = projectDescInput.value;
+
+    // Format email subject and body
+    const subject = encodeURIComponent(`New Project Quote Request - ${businessName}`);
+    const emailBody = `Hello WebCraft Studio,
+
+I would like to request a free quote for my project. Below are the details:
+
+--------------------------------------------------
+CONTACT & BUSINESS INFO
+--------------------------------------------------
+* Full Name: ${name}
+* Business Name: ${businessName}
+* Phone Number: ${phone}
+* Email Address: ${email}
+
+--------------------------------------------------
+PROJECT DETAILS
+--------------------------------------------------
+* Type of Website: ${websiteType}
+* Budget Range: ${budgetRange}
+
+* Project Description:
+${projectDesc}
+
+--------------------------------------------------
+Submitted via Quote Request Form.`;
+
+    const body = encodeURIComponent(emailBody);
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=info@localiqdigitalmedia.in&su=${subject}&body=${body}`;
+
+    // Redirect to Gmail compose in a new tab
+    window.open(gmailUrl, '_blank');
+
     setTimeout(() => {
-      btn.innerHTML = '✓ Message Sent!';
+      btn.innerHTML = '✓ Redirected to Gmail!';
       btn.style.background = '#10b981';
       contactForm.reset();
+
+      // Reset custom select dropdown displays back to placeholder texts
+      document.querySelectorAll('.custom-select').forEach(wrapper => {
+        const selectEl = wrapper.querySelector('select');
+        const triggerSpan = wrapper.querySelector('.custom-select__trigger span');
+        if (selectEl && triggerSpan) {
+          triggerSpan.textContent = selectEl.options[0].text;
+        }
+      });
 
       setTimeout(() => {
         btn.innerHTML = 'Send My Request <span class="arrow">→</span>';
         btn.disabled = false;
         btn.style.background = '';
       }, 3000);
-    }, 1200);
+    }, 1000);
   });
 }
 
@@ -735,8 +873,24 @@ function initCustomSelects() {
 
     trigger.addEventListener('click', (e) => {
       e.stopPropagation();
-      const isOpen = wrapper.classList.toggle('open');
-      if (isOpen) options.classList.add('open'); else options.classList.remove('open');
+      const isAlreadyOpen = wrapper.classList.contains('open');
+      
+      // Close all other custom dropdowns
+      document.querySelectorAll('.custom-select').forEach(otherWrapper => {
+        if (otherWrapper !== wrapper) {
+          otherWrapper.classList.remove('open');
+          const otherOptions = otherWrapper.querySelector('.custom-select__options');
+          if (otherOptions) otherOptions.classList.remove('open');
+        }
+      });
+
+      if (isAlreadyOpen) {
+        wrapper.classList.remove('open');
+        options.classList.remove('open');
+      } else {
+        wrapper.classList.add('open');
+        options.classList.add('open');
+      }
     });
 
     document.addEventListener('click', (e) => {

@@ -6,6 +6,7 @@
   <title>Service Details – WebCraft Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="styles.css">
   <style>
     /* Specific styles for Service Details */
@@ -271,12 +272,11 @@
         <span class="logo-text">WebCraft<em>Studio</em></span>
       </a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="index.html" data-page="home">Home</a></li>
-        <li><a href="about.html"    data-page="about">About</a></li>
-        <li><a href="services.html" data-page="services">Services</a></li>
-        <li><a href="portfolio.html" data-page="portfolio">Portfolio</a></li>
-       
-        <li><a href="contact.html" data-page="contact">Contact</a></li>
+        <li><a href="index.html" data-page="home"><i class="bi bi-house-door"></i> Home</a></li>
+        <li><a href="about.html"    data-page="about"><i class="bi bi-info-circle"></i> About</a></li>
+        <li><a href="services.html" data-page="services"><i class="bi bi-grid-fill"></i> Services</a></li>
+        <li><a href="portfolio.html" data-page="portfolio"><i class="bi bi-collection-fill"></i> Portfolio</a></li>
+        <li><a href="contact.html" data-page="contact"><i class="bi bi-envelope-fill"></i> Contact</a></li>
       </ul>
       <a class="btn-nav" href="contact.html">Request a Website</a>
       <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -323,15 +323,15 @@
     <div class="container">
       <div class="service-content-wrapper">
         <div class="service-main-content">
-          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop" alt="Effective Management" class="service-main-img">
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=100&w=3840&auto=format&fit=crop" alt="Effective Management" class="service-main-img">
           <div class="service-body">
-            <h2>We Ensure Best Service</h2>
-            <p>The full service we are offering is specifically designed to meet your business needs and projects. We employ the latest technologies and best practices to ensure your project is successful, secure, and scalable. Our dedicated team of experts works closely with you to deliver exceptional results that exceed your expectations.</p>
-            <p>We believe in building long-term partnerships with our clients. By understanding your unique challenges and objectives, we can create tailored solutions that drive real business growth and digital transformation. Our approach combines strategic thinking, innovative design, and robust technical implementation.</p>
+            <h2 id="service-content-title">We Ensure Best Service</h2>
+            <p id="service-desc-1">The full service we are offering is specifically designed to meet your business needs and projects. We employ the latest technologies and best practices to ensure your project is successful, secure, and scalable. Our dedicated team of experts works closely with you to deliver exceptional results that exceed your expectations.</p>
+            <p id="service-desc-2">We believe in building long-term partnerships with our clients. By understanding your unique challenges and objectives, we can create tailored solutions that drive real business growth and digital transformation. Our approach combines strategic thinking, innovative design, and robust technical implementation.</p>
             
             <h2 style="margin-top: 2rem;">What You Will Get</h2>
             <p>Choosing this service means you will benefit from our comprehensive approach to digital solutions:</p>
-            <ul style="padding-left: 1.5rem; margin-bottom: 2rem;">
+            <ul id="service-features-list" style="padding-left: 1.5rem; margin-bottom: 2rem;">
               <li style="color:#a1a1aa; margin-bottom:0.5rem; line-height:1.6;">Customized Strategy & Planning tailored to your specific goals</li>
               <li style="color:#a1a1aa; margin-bottom:0.5rem; line-height:1.6;">High-Quality Execution by our team of experienced professionals</li>
               <li style="color:#a1a1aa; margin-bottom:0.5rem; line-height:1.6;">Dedicated Support Team available to address your questions and concerns</li>
@@ -365,7 +365,9 @@
       <h2>Related Services</h2>
       <div class="service-detail-grid">
         <div class="service-detail-item">
-          <div class="service-detail-icon">📱</div>
+          <div class="service-detail-icon">
+            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=100&w=3840&auto=format&fit=crop" alt="Mobile App Development illustration">
+          </div>
           <div class="service-detail-text">
             <h3>Mobile App Development</h3>
             <p>There are many variations of passages of Lorem available.</p>
@@ -373,7 +375,9 @@
           </div>
         </div>
         <div class="service-detail-item">
-          <div class="service-detail-icon">💻</div>
+          <div class="service-detail-icon">
+            <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=100&w=3840&auto=format&fit=crop" alt="Software Development illustration">
+          </div>
           <div class="service-detail-text">
             <h3>Software Development</h3>
             <p>There are many variations of passages of Lorem available.</p>
@@ -381,7 +385,9 @@
           </div>
         </div>
         <div class="service-detail-item">
-          <div class="service-detail-icon">✨</div>
+          <div class="service-detail-icon">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=100&w=3840&auto=format&fit=crop" alt="UI/UX Design illustration">
+          </div>
           <div class="service-detail-text">
             <h3>UI/UX Design</h3>
             <p>There are many variations of passages of Lorem available.</p>
@@ -401,12 +407,12 @@
             <span class="logo-mark">W</span>
             <span class="logo-text">WebCraft<em>Studio</em></span>
           </a>
-          <p>Affordable, professional websites for small businesses. We help local businesses grow online.</p>
+          <p>Affordable, professional web solutions for businesses of all sizes. We help businesses grow online.</p>
           <div class="social-links">
-            <a href="#" aria-label="Facebook">f</a>
-            <a href="#" aria-label="Instagram">in</a>
-            <a href="#" aria-label="Twitter">𝕏</a>
-            <a href="#" aria-label="LinkedIn">Li</a>
+            <a href="https://www.facebook.com/profile.php?id=61559983935950" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/localiq1/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://x.com/LocaliqM" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
         <div class="footer-col">
@@ -432,10 +438,10 @@
         <div class="footer-col">
           <h4>Contact</h4>
           <ul class="contact-info">
-            <li>📧 hello@webcraftstudio.com</li>
-            <li>📞 +1 (555) 123-4567</li>
-            <li>📍 123 Digital Ave, NYC</li>
-            <li><span class="whatsapp-link" onclick="window.open('https://wa.me/15551234567','_blank')">💬 WhatsApp Us</span></li>
+            <li>📧 info@localiqdigitalmedia.com</li>
+            <li>📞 +918121433370</li>
+            <li>📍 Patancheruvu</li>
+            <li><span class="whatsapp-link" onclick="window.open('https://wa.me/918121433370','_blank')">💬 WhatsApp Us</span></li>
           </ul>
         </div>
       </div>
@@ -466,8 +472,37 @@
           'Digital Marketing': ['SEO Optimization', 'Social Media Marketing', 'Content Strategy', 'PPC Campaigns', 'Email Marketing'],
           'Content Creation': ['Copywriting', 'Blog Writing', 'Video Production', 'Graphic Design', 'Social Media Posts'],
           'Software Testing': ['Automated Testing', 'Manual Testing', 'Performance Testing', 'Security Testing', 'QA Consulting'],
-          'Data Analysis': ['Business Intelligence', 'Data Visualization', 'Predictive Analytics', 'Data Mining', 'Reporting']
+          'Data Analysis': ['Business Intelligence', 'Data Visualization', 'Predictive Analytics', 'Data Mining', 'Reporting'],
+          'Cloud & DevOps': ['Cloud Migration', 'Infrastructure as Code', 'Docker & Kubernetes', 'CI/CD Automation', 'Server Monitoring'],
+          'Cybersecurity': ['Security Auditing', 'Penetration Testing', 'Vulnerability Assessment', 'Threat Mitigation', 'Compliance Checks'],
+          'E-commerce Solutions': ['Shopify Development', 'Custom Cart Systems', 'Payment Gateway Integration', 'Inventory Management', 'E-commerce SEO']
         };
+
+        // Function to dynamically update main body content based on subcategory selection
+        function updatePageContent(subcat) {
+          const titleEl = document.getElementById('service-content-title');
+          if (titleEl) titleEl.innerText = `We Ensure Best ${subcat} Service`;
+
+          const desc1 = document.getElementById('service-desc-1');
+          const desc2 = document.getElementById('service-desc-2');
+          
+          if (desc1) {
+            desc1.innerText = `Our expert team specializes in ${subcat} to deliver robust, high-performance, and scalable solutions tailored specifically to your needs. We employ the latest technologies, modern design principles, and industry-standard workflows to ensure your project is secure, reliable, and optimized for success.`;
+          }
+          if (desc2) {
+            desc2.innerText = `We believe in building long-term partnerships with our clients. By understanding your unique challenges and objectives, we can structure custom ${subcat} solutions that drive real business growth and digital transformation. Our approach combines strategic planning, innovative design, and robust implementation.`;
+          }
+
+          const listEl = document.getElementById('service-features-list');
+          if (listEl) {
+            listEl.innerHTML = `
+              <li style="color:#a1a1aa; margin-bottom:0.5rem; line-height:1.6;">Customized <strong>${subcat}</strong> Strategy & Planning tailored to your specific goals</li>
+              <li style="color:#a1a1aa; margin-bottom:0.5rem; line-height:1.6;">High-Quality Execution of <strong>${subcat}</strong> by our experienced professionals</li>
+              <li style="color:#a1a1aa; margin-bottom:0.5rem; line-height:1.6;">Dedicated Support Team available to address your questions and concerns</li>
+              <li style="color:#a1a1aa; margin-bottom:0.5rem; line-height:1.6;">Scalable & Secure Solutions designed to grow with your business</li>
+            `;
+          }
+        }
 
         const categoryList = document.getElementById('dynamic-category-list');
         if (categoryList && serviceCategories[serviceTitle]) {
@@ -477,7 +512,16 @@
             const a = document.createElement('a');
             a.href = '#';
             a.innerText = cat;
-            if (index === 0) a.classList.add('active');
+            if (index === 0) {
+              a.classList.add('active');
+              updatePageContent(cat);
+            }
+            a.addEventListener('click', (e) => {
+              e.preventDefault();
+              categoryList.querySelectorAll('a').forEach(link => link.classList.remove('active'));
+              a.classList.add('active');
+              updatePageContent(cat);
+            });
             li.appendChild(a);
             categoryList.appendChild(li);
           });
@@ -485,15 +529,18 @@
 
         // Set image based on service
         const serviceData = {
-          'Web Development': 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1000&auto=format&fit=crop',
-          'Mobile App Development': 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1000&auto=format&fit=crop',
-          'Software Development': 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop',
-          'UI/UX Design': 'https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1000&auto=format&fit=crop',
-          'Figma Design': 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop',
-          'Digital Marketing': 'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?q=80&w=1000&auto=format&fit=crop',
-          'Content Creation': 'https://images.unsplash.com/photo-1542435503-956c25e1be8f?q=80&w=1000&auto=format&fit=crop',
-          'Software Testing': 'https://images.unsplash.com/photo-1516322311711-27d108ba3b25?q=80&w=1000&auto=format&fit=crop',
-          'Data Analysis': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop'
+          'Web Development': 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=100&w=3840&auto=format&fit=crop',
+          'Mobile App Development': 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=100&w=3840&auto=format&fit=crop',
+          'Software Development': 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=100&w=3840&auto=format&fit=crop',
+          'UI/UX Design': 'https://images.unsplash.com/photo-1561070791-2526d30994b5?q=100&w=3840&auto=format&fit=crop',
+          'Figma Design': 'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?q=100&w=3840&auto=format&fit=crop',
+          'Digital Marketing': 'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?q=100&w=3840&auto=format&fit=crop',
+          'Content Creation': 'https://images.unsplash.com/photo-1542435503-956c25e1be8f?q=100&w=3840&auto=format&fit=crop',
+          'Software Testing': 'https://images.unsplash.com/photo-1516322311711-27d108ba3b25?q=100&w=3840&auto=format&fit=crop',
+          'Data Analysis': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=100&w=3840&auto=format&fit=crop',
+          'Cloud & DevOps': 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=100&w=3840&auto=format&fit=crop',
+          'Cybersecurity': 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=100&w=3840&auto=format&fit=crop',
+          'E-commerce Solutions': 'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?q=100&w=3840&auto=format&fit=crop'
         };
         
         const mainImg = document.querySelector('.service-main-img');

@@ -4,14 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WebCraft Studio – Affordable Websites for Every Business</title>
-<meta name="description" content="Professional, affordable website development for small businesses. Restaurants, shops, salons, clinics, startups & more. Starting from $299.">
-<meta name="keywords" content="website design, small business websites, affordable web design, restaurant website, ecommerce website, WebCraft Studio">
+<meta name="description" content="Professional, affordable website development for businesses of all sizes. Restaurants, shops, salons, clinics, startups & more. Starting from ₹5000.">
+<meta name="keywords" content="website design, affordable websites, web design agency, web development, custom software, WebCraft Studio">
 <meta property="og:title" content="WebCraft Studio – Premium Websites for Every Business">
-<meta property="og:description" content="Professional, affordable website development for small businesses. Starting from $299.">
+<meta property="og:description" content="Professional, affordable website development for businesses of all sizes. Starting from ₹5000.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <link rel="stylesheet" href="styles.css">
 <style>
   /* --- Dark Theme Overrides --- */
@@ -30,28 +31,7 @@
     color: var(--text);
   }
 
-  /* Specific overrides for Navbar in Dark Mode */
-  .navbar.scrolled {
-    background: rgba(15, 17, 21, 0.95);
-    border-bottom: 1px solid var(--border);
-  }
 
-  .nav-links.open {
-    background: rgba(15, 17, 21, 0.97);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .nav-links a {
-    color: var(--text-muted);
-  }
-
-  .nav-links.open a {
-    color: var(--text);
-  }
-
-  .hamburger span {
-    background: var(--text);
-  }
 
   /* Card Dark Theme Overrides */
   .service-card, 
@@ -103,12 +83,11 @@
       <span class="logo-text">WebCraft<em>Studio</em></span>
     </a>
     <ul class="nav-links" id="navLinks" role="list">
-      <li><a href="index.html"    data-page="home">Home</a></li>
-      <li><a href="about.html"    data-page="about">About</a></li>
-      <li><a href="services.html" data-page="services">Services</a></li>
-      <li><a href="portfolio.html"data-page="portfolio">Portfolio</a></li>
-      
-      <li><a href="contact.html"  data-page="contact">Contact</a></li>
+      <li><a href="index.html"    data-page="home"><i class="bi bi-house-door"></i> Home</a></li>
+      <li><a href="about.html"    data-page="about"><i class="bi bi-info-circle"></i> About</a></li>
+      <li><a href="services.html" data-page="services"><i class="bi bi-grid-fill"></i> Services</a></li>
+      <li><a href="portfolio.html"data-page="portfolio"><i class="bi bi-collection-fill"></i> Portfolio</a></li>
+      <li><a href="contact.html"  data-page="contact"><i class="bi bi-envelope-fill"></i> Contact</a></li>
     </ul>
     <a class="btn-nav" href="contact.html" aria-label="Request a website quote">Request a Website</a>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
@@ -160,7 +139,7 @@
       <!-- Animated badge -->
       <div class="hero-badge" role="note">
         <span class="badge-dot" aria-hidden="true">🚀</span>
-        <span>Websites starting from <strong>$299</strong></span>
+        <span>Websites starting from <strong>₹5,000</strong></span>
       </div>
 
       <!-- Title with split-text -->
@@ -171,7 +150,7 @@
       <!-- Subtitle -->
       <p class="hero-sub">
         We design and build stunning, fast, mobile-friendly websites for restaurants,
-        shops, salons, clinics, and startups — at prices that make sense for small businesses.
+        shops, salons, clinics, and startups — at prices that make sense for every businesses.
       </p>
 
       <!-- CTAs -->
@@ -185,7 +164,7 @@
       </div>
 
       <!-- Stats -->
-      <div class="hero-stats" role="list" aria-label="Key statistics">
+      <!-- <div class="hero-stats" role="list" aria-label="Key statistics">
         <div class="stat" role="listitem">
           <strong data-target="150" data-suffix="+">150+</strong>
           <span>Projects Delivered</span>
@@ -201,7 +180,7 @@
           <span>Avg. Delivery</span>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- Scroll indicator -->
     <div class="hero-scroll" aria-hidden="true">
@@ -213,61 +192,93 @@
   <!-- ========================
        SERVICES SECTION
        ======================== -->
-  <section class="section" id="services-home" style="background:var(--bg);" aria-labelledby="services-heading">
+  <section class="section" id="services-home" aria-labelledby="services-heading">
+    <!-- Ambient glowing orbs inside section for unique aesthetics -->
+    <div class="ambient-glow-orb orb-1" aria-hidden="true"></div>
+    <div class="ambient-glow-orb orb-2" aria-hidden="true"></div>
     <div class="container">
-      <div class="section-label">What We Build</div>
-      <h2 class="section-title reveal" id="services-heading">Services Tailored for<br>Small Businesses</h2>
-      <p class="section-sub reveal" data-delay="1">Every service is crafted to help your business grow online without breaking the bank.</p>
+      <div class="services-header reveal">
+        <div class="sh-left">
+          <div class="section-label">What We Build</div>
+          <h2 class="section-title" id="services-heading">Services Tailored for<br>Every Business</h2>
+        </div>
+        <div class="sh-right">
+          <p class="services-desc">Every service is crafted with high-end precision to help your business grow online, establish an authority brand, and drive maximum conversions without breaking the bank.</p>
+        </div>
+      </div>
 
       <div class="services-grid">
         <!-- Card 1 -->
         <div class="service-card reveal" data-delay="0" aria-label="Business Website service">
-          <div class="service-icon-wrap" aria-hidden="true"><span>🏢</span></div>
+          <div class="service-icon-wrap" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=100&w=3840&auto=format&fit=crop" alt="Business website illustration">
+          </div>
           <h3>Business Website</h3>
           <p>Professional multi-page websites that establish your online presence and convert visitors into customers.</p>
-          <a class="card-link" href="services.html" aria-label="Learn more about Business Website">Learn more →</a>
         </div>
         <!-- Card 2 -->
         <div class="service-card reveal" data-delay="1" aria-label="E-commerce Website service">
-          <div class="service-icon-wrap" aria-hidden="true"><span>🛍️</span></div>
+          <div class="service-icon-wrap" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?q=100&w=3840&auto=format&fit=crop" alt="E-commerce website illustration">
+          </div>
           <h3>E-commerce Website</h3>
           <p>Full-featured online stores with product management, secure payments, and order tracking.</p>
-          <a class="card-link" href="services.html" aria-label="Learn more about E-commerce Website">Learn more →</a>
         </div>
         <!-- Card 3 -->
         <div class="service-card reveal" data-delay="2" aria-label="Restaurant Website service">
-          <div class="service-icon-wrap" aria-hidden="true"><span>🍽️</span></div>
+          <div class="service-icon-wrap" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=100&w=3840&auto=format&fit=crop" alt="Restaurant website illustration">
+          </div>
           <h3>Restaurant Website</h3>
           <p>Stunning restaurant sites with menu display, reservation forms, and food gallery sections.</p>
-          <a class="card-link" href="services.html" aria-label="Learn more about Restaurant Website">Learn more →</a>
         </div>
         <!-- Card 4 -->
         <div class="service-card reveal" data-delay="3" aria-label="Portfolio Website service">
-          <div class="service-icon-wrap" aria-hidden="true"><span>🎨</span></div>
+          <div class="service-icon-wrap" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=100&w=3840&auto=format&fit=crop" alt="Portfolio website illustration">
+          </div>
           <h3>Portfolio Website</h3>
           <p>Creative portfolios for freelancers, artists, and agencies to showcase their best work.</p>
-          <a class="card-link" href="services.html" aria-label="Learn more about Portfolio Website">Learn more →</a>
         </div>
         <!-- Card 5 -->
         <div class="service-card reveal" data-delay="4" aria-label="Website Redesign service">
-          <div class="service-icon-wrap" aria-hidden="true"><span>🔄</span></div>
+          <div class="service-icon-wrap" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=100&w=3840&auto=format&fit=crop" alt="Website redesign illustration">
+          </div>
           <h3>Website Redesign</h3>
           <p>Transform your outdated website into a modern, high-performing digital asset.</p>
-          <a class="card-link" href="services.html" aria-label="Learn more about Website Redesign">Learn more →</a>
         </div>
         <!-- Card 6 -->
         <div class="service-card reveal" data-delay="5" aria-label="SEO Optimization service">
-          <div class="service-icon-wrap" aria-hidden="true"><span>📈</span></div>
+          <div class="service-icon-wrap" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=100&w=3840&auto=format&fit=crop" alt="SEO analytics illustration">
+          </div>
           <h3>SEO Optimization</h3>
           <p>Get found on Google with keyword research, on-page SEO, and performance optimization.</p>
-          <a class="card-link" href="services.html" aria-label="Learn more about SEO Optimization">Learn more →</a>
         </div>
         <!-- Card 7 -->
         <div class="service-card reveal" data-delay="6" aria-label="Website Maintenance service">
-          <div class="service-icon-wrap" aria-hidden="true"><span>🛠️</span></div>
+          <div class="service-icon-wrap" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=100&w=3840&auto=format&fit=crop" alt="Website maintenance illustration">
+          </div>
           <h3>Website Maintenance</h3>
           <p>Monthly care plans to keep your site updated, secure, and running at peak performance.</p>
-          <a class="card-link" href="services.html" aria-label="Learn more about Website Maintenance">Learn more →</a>
+        </div>
+        <!-- Card 8 -->
+        <div class="service-card reveal" data-delay="7" aria-label="UI/UX & Figma Design service">
+          <div class="service-icon-wrap" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=100&w=3840&auto=format&fit=crop" alt="UI/UX design illustration">
+          </div>
+          <h3>UI/UX & Figma Design</h3>
+          <p>Custom user-centric interface layouts, wireframes, and interactive prototypes built to deliver an exceptional user experience.</p>
+        </div>
+        <!-- Card 9 -->
+        <div class="service-card reveal" data-delay="8" aria-label="Custom Web Applications service">
+          <div class="service-icon-wrap" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=100&w=3840&auto=format&fit=crop" alt="Custom web applications illustration">
+          </div>
+          <h3>Custom Web Applications</h3>
+          <p>Tailor-made, interactive web portals, custom API integrations, and robust database-driven systems built to scale with your business.</p>
         </div>
       </div>
     </div>
@@ -283,16 +294,16 @@
         We Serve Every Local<br>Business Type
       </h2>
       <div class="industries-grid" role="list" aria-label="Industries we serve">
-        <div class="industry-pill reveal" data-delay="0" role="listitem"><span aria-hidden="true">🍕</span> Restaurants</div>
-        <div class="industry-pill reveal" data-delay="1" role="listitem"><span aria-hidden="true">🛒</span> Retail Shops</div>
-        <div class="industry-pill reveal" data-delay="2" role="listitem"><span aria-hidden="true">💇</span> Salons</div>
-        <div class="industry-pill reveal" data-delay="3" role="listitem"><span aria-hidden="true">🏥</span> Clinics</div>
-        <div class="industry-pill reveal" data-delay="4" role="listitem"><span aria-hidden="true">👗</span> Fashion Brands</div>
-        <div class="industry-pill reveal" data-delay="5" role="listitem"><span aria-hidden="true">🏡</span> Real Estate</div>
-        <div class="industry-pill reveal" data-delay="6" role="listitem"><span aria-hidden="true">🚀</span> Startups</div>
-        <div class="industry-pill reveal" data-delay="7" role="listitem"><span aria-hidden="true">📸</span> Photographers</div>
-        <div class="industry-pill reveal" data-delay="8" role="listitem"><span aria-hidden="true">🍰</span> Bakeries</div>
-        <div class="industry-pill reveal" data-delay="9" role="listitem"><span aria-hidden="true">⚖️</span> Law Firms</div>
+        <div class="industry-pill reveal" data-delay="0" role="listitem"><i class="bi bi-cup-hot" aria-hidden="true"></i> Restaurants</div>
+        <div class="industry-pill reveal" data-delay="1" role="listitem"><i class="bi bi-shop" aria-hidden="true"></i> Retail Shops</div>
+        <div class="industry-pill reveal" data-delay="2" role="listitem"><i class="bi bi-scissors" aria-hidden="true"></i> Salons</div>
+        <div class="industry-pill reveal" data-delay="3" role="listitem"><i class="bi bi-heart-pulse" aria-hidden="true"></i> Clinics</div>
+        <div class="industry-pill reveal" data-delay="4" role="listitem"><i class="bi bi-gem" aria-hidden="true"></i> Fashion Brands</div>
+        <div class="industry-pill reveal" data-delay="5" role="listitem"><i class="bi bi-house" aria-hidden="true"></i> Real Estate</div>
+        <div class="industry-pill reveal" data-delay="6" role="listitem"><i class="bi bi-rocket-takeoff" aria-hidden="true"></i> Startups</div>
+        <div class="industry-pill reveal" data-delay="7" role="listitem"><i class="bi bi-camera" aria-hidden="true"></i> Photographers</div>
+        <div class="industry-pill reveal" data-delay="8" role="listitem"><i class="bi bi-cookie" aria-hidden="true"></i> Bakeries</div>
+        <div class="industry-pill reveal" data-delay="9" role="listitem"><i class="bi bi-briefcase" aria-hidden="true"></i> Law Firms</div>
       </div>
     </div>
   </section>
@@ -395,7 +406,7 @@
         <!-- Starter -->
         <div class="pricing-card reveal" data-delay="0" aria-label="Starter plan — $299">
           <div class="plan-name">Starter</div>
-          <div class="plan-price">$299 <span>/ one-time</span></div>
+          <div class="plan-price">₹5000 <span>/ one-time</span></div>
           <p class="plan-desc">Perfect for small businesses needing a quick online presence.</p>
           <ul class="plan-features" aria-label="Starter plan features">
             <li>✓ Up to 3 Pages</li>
@@ -404,9 +415,7 @@
             <li>✓ Basic SEO Setup</li>
             <li>✓ 7-Day Delivery</li>
             <li>✓ 1 Month Support</li>
-            <li class="disabled">✗ E-commerce</li>
-            <li class="disabled">✗ Custom Animations</li>
-          </ul>
+           </ul>
           <a class="btn-outline full" href="contact.html" aria-label="Get started with Starter plan">Get Started</a>
         </div>
 
@@ -414,13 +423,13 @@
         <div class="pricing-card featured reveal" data-delay="1" aria-label="Business plan — $599 — Most Popular">
           <div class="popular-badge" aria-label="Most Popular plan">Most Popular</div>
           <div class="plan-name">Business</div>
-          <div class="plan-price">$599 <span>/ one-time</span></div>
+          <div class="plan-price">₹15000 <span>/ one-time</span></div>
           <p class="plan-desc">Everything growing businesses need to stand out online.</p>
           <ul class="plan-features" aria-label="Business plan features">
             <li>✓ Up to 7 Pages</li>
             <li>✓ Mobile Responsive</li>
             <li>✓ Contact &amp; Booking Form</li>
-            <li>✓ Advanced SEO</li>
+            <li>✓ Basic SEO</li>
             <li>✓ 10-Day Delivery</li>
             <li>✓ 3 Month Support</li>
             <li>✓ Google Analytics</li>
@@ -430,17 +439,16 @@
         </div>
 
         <!-- Premium -->
-        <div class="pricing-card reveal" data-delay="2" aria-label="Premium plan — $999+">
+        <div class="pricing-card reveal" data-delay="2" aria-label="Premium plan — ₹20000+">
           <div class="plan-name">Premium</div>
-          <div class="plan-price">$999+ <span>/ one-time</span></div>
+          <div class="plan-price">₹20000+ <span>/ one-time</span></div>
           <p class="plan-desc">Full-featured websites for businesses ready to scale.</p>
           <ul class="plan-features" aria-label="Premium plan features">
             <li>✓ Unlimited Pages</li>
             <li>✓ Mobile Responsive</li>
             <li>✓ E-commerce Store</li>
             <li>✓ Full SEO Package</li>
-            <li>✓ 14-Day Delivery</li>
-            <li>✓ 6 Month Support</li>
+             <li>✓ 6 Month Support</li>
             <li>✓ Custom Animations</li>
             <li>✓ CMS Integration</li>
           </ul>
@@ -626,12 +634,12 @@
           <span class="logo-mark" aria-hidden="true">W</span>
           <span class="logo-text">WebCraft<em>Studio</em></span>
         </a>
-        <p>Affordable, professional websites for small businesses. We help local businesses grow online.</p>
+        <p>Affordable, professional web solutions for businesses of all sizes. We help businesses grow online.</p>
         <div class="social-links" role="list" aria-label="Social media links">
-          <a href="#" aria-label="Facebook" role="listitem">f</a>
-          <a href="#" aria-label="Instagram" role="listitem">in</a>
-          <a href="#" aria-label="Twitter / X" role="listitem">𝕏</a>
-          <a href="#" aria-label="LinkedIn" role="listitem">Li</a>
+          <a href="https://www.facebook.com/profile.php?id=61559983935950" target="_blank" rel="noopener noreferrer" aria-label="Facebook" role="listitem"><i class="bi bi-facebook"></i></a>
+          <a href="https://www.instagram.com/localiq1/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" role="listitem"><i class="bi bi-instagram"></i></a>
+          <a href="https://x.com/LocaliqM" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X" role="listitem"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" aria-label="LinkedIn" role="listitem"><i class="bi bi-linkedin"></i></a>
         </div>
       </div>
       <div class="footer-col">
@@ -657,12 +665,12 @@
       <div class="footer-col">
         <h4>Contact</h4>
         <ul class="contact-info">
-          <li>📧 hello@webcraftstudio.com</li>
-          <li>📞 +1 (555) 123-4567</li>
-          <li>📍 123 Digital Ave, NYC</li>
+          <li>📧 info@localiqdigitalmedia.com</li>
+          <li>📞 +918121433370</li>
+          <li>📍 Patancheruvu</li>
           <li>
             <span class="whatsapp-link"
-                  onclick="window.open('https://wa.me/15551234567','_blank')"
+                  onclick="window.open('https://wa.me/918121433370','_blank')"
                   role="link"
                   tabindex="0"
                   aria-label="Contact us on WhatsApp"
