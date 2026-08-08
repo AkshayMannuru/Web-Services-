@@ -166,19 +166,13 @@ let lastScrollY = window.scrollY;
 window.addEventListener('scroll', () => {
   const currentScrollY = window.scrollY;
   
-  if (currentScrollY <= 20) {
-    // At the top: transparent, visible
-    navbar.classList.remove('scrolled');
-    navbar.classList.remove('nav-hidden');
-  } else if (currentScrollY > lastScrollY) {
-    // Scrolling down: hide the navbar
-    navbar.classList.add('nav-hidden');
-  } else {
-    // Scrolling up: show the navbar with white background
-    navbar.classList.remove('nav-hidden');
+  if (currentScrollY > 40) {
     navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
   }
   
+  navbar.classList.remove('nav-hidden');
   lastScrollY = currentScrollY;
   updateScrollTopBtn();
 }, { passive: true });
@@ -374,10 +368,9 @@ if (statsSection) {
         span.className = 'word';
         span.textContent = word;
         span.style.display = 'inline-block';
-        span.style.marginRight = '0.35em';
+        span.style.marginRight = '0.22em';
         span.style.transitionDelay = `${i * 0.08}s`;
         frag.appendChild(span);
-        frag.appendChild(document.createTextNode(' '));
       });
       node.replaceWith(frag);
     }
