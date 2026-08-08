@@ -2553,9 +2553,6 @@ body[data-page="careers"] .careers-positions-section {
   font-size: 0.95rem !important;
   cursor: pointer !important;
   position: relative !important;
-  z-index: 1 !important;
-}
-
 .file-name-display {
   font-size: 0.83rem !important;
   color: rgba(255, 255, 255, 0.6) !important;
@@ -2584,6 +2581,147 @@ body[data-page="careers"] .careers-positions-section {
 .apply-submit-btn:hover {
   transform: translateY(-2px) !important;
   box-shadow: 0 12px 30px rgba(0, 87, 255, 0.55) !important;
+}
+
+/* Apply Form Grid Layout */
+.apply-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.4rem;
+}
+
+.apply-field-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.notice-pills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.4rem;
+}
+
+.input-icon-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* Mobile & Tablet Responsiveness for Apply Modal */
+@media (max-width: 768px) {
+  .modal-overlay {
+    padding: 0.8rem 0.6rem !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .modal-card {
+    max-height: 92vh !important;
+    border-radius: 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9) !important;
+  }
+
+  .modal-header {
+    padding: 1.1rem 1.25rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .modal-title-box h3 {
+    font-size: 1.2rem !important;
+  }
+
+  .modal-title-box p {
+    font-size: 0.82rem !important;
+  }
+
+  .modal-close-btn {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 1.1rem !important;
+  }
+
+  .modal-body {
+    padding: 1.25rem 1.1rem !important;
+    flex: 1 !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .apply-form-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.1rem !important;
+  }
+
+  .apply-field-group label {
+    font-size: 0.75rem !important;
+    margin-bottom: 0.35rem !important;
+  }
+
+  .apply-field-group input,
+  .apply-field-group select {
+    padding: 0.75rem 0.85rem !important;
+    font-size: 0.88rem !important;
+    border-radius: 10px !important;
+  }
+
+  .apply-field-group .input-icon-wrapper input,
+  .apply-field-group .input-icon-wrapper select {
+    padding-left: 2.6rem !important;
+  }
+
+  .apply-field-group .input-icon-wrapper i {
+    left: 0.95rem !important;
+    font-size: 1rem !important;
+  }
+
+  .notice-pills-row {
+    gap: 0.45rem !important;
+  }
+
+  .notice-pill {
+    padding: 0.45rem 0.8rem !important;
+    font-size: 0.78rem !important;
+    flex: 1 1 auto !important;
+    text-align: center !important;
+  }
+
+  .file-upload-box {
+    padding: 1.1rem 0.8rem !important;
+  }
+
+  .file-upload-label {
+    font-size: 0.88rem !important;
+  }
+
+  .file-name-display {
+    font-size: 0.78rem !important;
+  }
+
+  .apply-submit-btn {
+    padding: 0.85rem !important;
+    font-size: 0.95rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-overlay {
+    padding: 0.4rem !important;
+  }
+
+  .modal-card {
+    max-height: 95vh !important;
+    border-radius: 16px !important;
+  }
+
+  .modal-header {
+    padding: 1rem 1rem !important;
+  }
+
+  .modal-body {
+    padding: 1rem 0.9rem !important;
+  }
 }
 
 .footer-bottom {
