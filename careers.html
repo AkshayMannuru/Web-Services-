@@ -410,12 +410,12 @@
       if (input.files && input.files[0]) {
         const file = input.files[0];
         text.innerText = file.name;
-        display.innerText = `Selected file: ${(file.size / (1024 * 1024)).toFixed(2)} MB`;
-        display.style.color = '#16a34a';
+        display.innerText = `File Selected: ${(file.size / (1024 * 1024)).toFixed(2)} MB · Ready to attach`;
+        display.style.color = '#38bdf8';
       } else {
         text.innerText = 'Choose resume file';
         display.innerText = 'Supported formats: PDF, DOC, DOCX';
-        display.style.color = '#64748b';
+        display.style.color = 'rgba(255, 255, 255, 0.6)';
       }
     }
 
@@ -423,13 +423,48 @@
       e.preventDefault();
       const btn = document.getElementById('applySubmitBtn');
       const role = document.getElementById('modalJobTitle').innerText;
-      const name = document.getElementById('applicantName').value;
-      btn.innerHTML = '<i class="bi bi-check-circle-fill"></i> Application Submitted!';
+      const name = document.getElementById('applicantName').value.trim();
+      const email = document.getElementById('applicantEmail').value.trim();
+      const phone = document.getElementById('applicantPhone').value.trim();
+      const location = document.getElementById('applicantLocation').value.trim();
+      const experience = document.getElementById('applicantExp').value.trim();
+      const company = document.getElementById('applicantCompany').value.trim() || 'N/A';
+      const designation = document.getElementById('applicantDesignation').value.trim() || 'N/A';
+      const salary = document.getElementById('applicantSalary').value.trim() || 'N/A';
+      const notice = document.getElementById('noticePeriodValue').value || 'Immediate';
+      const linkedin = document.getElementById('applicantLinkedin').value.trim() || 'N/A';
+      const portfolio = document.getElementById('applicantPortfolio').value.trim() || 'N/A';
+      const resumeInput = document.getElementById('resumeInput');
+      const resumeFileName = (resumeInput.files && resumeInput.files[0]) ? resumeInput.files[0].name : 'Resume File Selected';
+
+      btn.innerHTML = '<i class="bi bi-envelope-paper-fill"></i> Redirecting to Gmail...';
       btn.style.background = '#16a34a';
       btn.disabled = true;
 
+      // Construct Gmail compose URL with prefilled applicant details
+      const subject = encodeURIComponent(`Job Application: ${role} - ${name}`);
+      const bodyContent = `JOB APPLICATION DETAILS
+========================================
+Position Applied For : ${role}
+Applicant Name       : ${name}
+Email Address        : ${email}
+Phone Number         : ${phone}
+Current Location     : ${location}
+Years of Experience  : ${experience}
+Current Company      : ${company}
+Current Designation  : ${designation}
+Expected Salary      : ${salary}
+Notice Period        : ${notice}
+LinkedIn Profile     : ${linkedin}
+Portfolio Website    : ${portfolio}
+Resume File          : ${resumeFileName}
+========================================
+Submitted via LocaliQ Digital Media Careers Portal`;
+
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=info@localiqdigitalmedia.com&su=${subject}&body=${encodeURIComponent(bodyContent)}`;
+
       setTimeout(() => {
-        alert(`Thank you ${name}! Your application for ${role} has been submitted successfully. Our HR team will contact you shortly.`);
+        window.open(gmailUrl, '_blank');
         closeApplyModal();
         e.target.reset();
         btn.innerHTML = 'Submit Application <i class="bi bi-arrow-right"></i>';
@@ -437,8 +472,8 @@
         btn.disabled = false;
         document.getElementById('filePickerText').innerText = 'Choose resume file';
         document.getElementById('fileNameDisplay').innerText = 'Supported formats: PDF, DOC, DOCX';
-        document.getElementById('fileNameDisplay').style.color = '#64748b';
-      }, 800);
+        document.getElementById('fileNameDisplay').style.color = 'rgba(255, 255, 255, 0.6)';
+      }, 500);
     }
 
     // Close modal on escape key

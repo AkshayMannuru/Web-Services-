@@ -2380,16 +2380,17 @@ body[data-page="careers"] .careers-positions-section {
 }
 
 .modal-header {
-  background: #050814 !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background: linear-gradient(135deg, rgba(0, 87, 255, 0.22), rgba(112, 0, 255, 0.18)), #090e24 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
   color: #ffffff !important;
-  padding: 1.5rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  padding: 1.6rem 2rem !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 20 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
 }
 
 .modal-title-box h3 {
@@ -2511,21 +2512,35 @@ body[data-page="careers"] .careers-positions-section {
   box-shadow: 0 4px 15px rgba(0, 87, 255, 0.4) !important;
 }
 
-/* File Upload Box */
+/* File Upload Box - Custom Overlay Style */
 .file-upload-box {
+  position: relative !important;
   background: rgba(0, 87, 255, 0.06) !important;
   border: 1.5px dashed rgba(0, 140, 255, 0.35) !important;
-  border-radius: 12px !important;
-  padding: 1.25rem !important;
+  border-radius: 14px !important;
+  padding: 1.5rem 1.2rem !important;
   text-align: center !important;
   cursor: pointer !important;
-  transition: background 0.2s ease, border-color 0.2s ease !important;
-  position: relative !important;
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
+  overflow: hidden !important;
 }
 
 .file-upload-box:hover {
   background: rgba(0, 87, 255, 0.12) !important;
   border-color: #0084ff !important;
+  box-shadow: 0 0 20px rgba(0, 132, 255, 0.15) !important;
+}
+
+.file-upload-input {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  opacity: 0 !important;
+  cursor: pointer !important;
+  z-index: 10 !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .file-upload-label {
@@ -2537,6 +2552,8 @@ body[data-page="careers"] .careers-positions-section {
   color: #60a5fa !important;
   font-size: 0.95rem !important;
   cursor: pointer !important;
+  position: relative !important;
+  z-index: 1 !important;
 }
 
 .file-name-display {
@@ -2544,6 +2561,8 @@ body[data-page="careers"] .careers-positions-section {
   color: rgba(255, 255, 255, 0.6) !important;
   margin-top: 0.4rem !important;
   font-weight: 500 !important;
+  position: relative !important;
+  z-index: 1 !important;
 }
 
 .apply-submit-btn {
