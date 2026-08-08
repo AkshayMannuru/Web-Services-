@@ -746,7 +746,7 @@ ${projectDesc}
 Submitted via Quote Request Form.`;
 
     const body = encodeURIComponent(emailBody);
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=info@localiqdigitalmedia.in&su=${subject}&body=${body}`;
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=info@localiqdigitalmedia.com&su=${subject}&body=${body}`;
 
     // Redirect to Gmail compose in a new tab
     window.open(gmailUrl, '_blank');
