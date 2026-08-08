@@ -465,25 +465,46 @@ document.addEventListener('click', (e) => {
    TESTIMONIALS CAROUSEL
    ============================================================ */
 (function initCarousel() {
-  const track  = qs('#testimonialsTrack');
-  const prev   = qs('#carouselPrev');
-  const next   = qs('#carouselNext');
-  const dots   = qsa('#carouselDots .carousel-dot');
+  const track = qs('#testimonialsTrack');
+  const prev = qs('#carouselPrev');
+  const next = qs('#carouselNext');
+  const dotsContainer = qs('#carouselDots');
   if (!track) return;
 
-  const cards   = qsa('.testimonial-card', track);
-  const total   = cards.length;
-  let perView   = window.innerWidth <= 768 ? 1 : 2;
-  let current   = 0;
-  let maxIndex;
+  const cards = qsa('.testimonial-card', track);
+  const total = cards.length;
+  let current = 0;
   let autoTimer;
 
-  function calcMax() {
-    perView  = window.innerWidth <= 768 ? 1 : 2;
-    maxIndex = Math.ceil(total / perView) - 1;
+  function getPerView() {
+    return window.innerWidth <= 768 ? 1 : 2;
+  }
+
+  function getMaxIndex() {
+    const perView = getPerView();
+    return Math.max(0, total - perView);
+  }
+
+  function renderDots() {
+    if (!dotsContainer) return;
+    const maxIdx = getMaxIndex();
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i <= maxIdx; i++) {
+      const btn = document.createElement('button');
+      btn.className = `carousel-dot${i === current ? ' active' : ''}`;
+      btn.dataset.index = i;
+      btn.setAttribute('aria-label', `Slide ${i + 1}`);
+      btn.addEventListener('click', () => {
+        goTo(i);
+        restartAuto();
+      });
+      dotsContainer.appendChild(btn);
+    }
   }
 
   function updateDots() {
+    if (!dotsContainer) return;
+    const dots = qsa('.carousel-dot', dotsContainer);
     dots.forEach((dot, i) => {
       dot.classList.toggle('active', i === current);
       dot.setAttribute('aria-pressed', i === current);
@@ -491,18 +512,28 @@ document.addEventListener('click', (e) => {
   }
 
   function goTo(index, smooth = true) {
-    calcMax();
-    current = clamp(index, 0, maxIndex);
+    const maxIdx = getMaxIndex();
+    current = clamp(index, 0, maxIdx);
 
-    const cardW  = cards[0].offsetWidth + 24; // card + gap
-    const offset = current * cardW * perView;
+    const card = cards[0];
+    const trackGap = window.innerWidth <= 768 ? 16 : 24;
+    const cardW = card.offsetWidth + trackGap;
+    const offset = current * cardW;
+
     track.style.transition = smooth ? 'transform .65s cubic-bezier(0.16, 1, 0.3, 1)' : 'none';
-    track.style.transform  = `translate3d(-${offset}px, 0, 0)`;
+    track.style.transform = `translate3d(-${offset}px, 0, 0)`;
     updateDots();
   }
 
-  function nextSlide() { goTo(current >= maxIndex ? 0 : current + 1); }
-  function prevSlide() { goTo(current <= 0 ? maxIndex : current - 1); }
+  function nextSlide() {
+    const maxIdx = getMaxIndex();
+    goTo(current >= maxIdx ? 0 : current + 1);
+  }
+
+  function prevSlide() {
+    const maxIdx = getMaxIndex();
+    goTo(current <= 0 ? maxIdx : current - 1);
+  }
 
   function startAuto() {
     autoTimer = setInterval(nextSlide, 5000);
@@ -517,18 +548,16 @@ document.addEventListener('click', (e) => {
     startAuto();
   }
 
-  calcMax();
-  updateDots();
+  renderDots();
+  goTo(0, false);
   startAuto();
 
   if (next) next.addEventListener('click', () => { nextSlide(); restartAuto(); });
   if (prev) prev.addEventListener('click', () => { prevSlide(); restartAuto(); });
 
-  dots.forEach(dot => {
-    dot.addEventListener('click', () => {
-      goTo(parseInt(dot.dataset.index));
-      restartAuto();
-    });
+  window.addEventListener('resize', () => {
+    renderDots();
+    goTo(current, false);
   });
 
   // Touch / swipe support
