@@ -329,6 +329,41 @@
   </div>
 
   <!-- ===========================
+       SUBMISSION CONFIRMATION MODAL POPUP
+       =========================== -->
+  <div class="modal-overlay" id="submissionNoticeModal" role="dialog" aria-modal="true" aria-labelledby="noticeModalTitle">
+    <div class="modal-card" style="max-width: 580px; overflow: hidden; border-radius: 24px;">
+      <div class="modal-header" style="background: linear-gradient(135deg, rgba(0, 87, 255, 0.3), rgba(112, 0, 255, 0.3)), #080d22; text-align: center; justify-content: center; flex-direction: column; padding: 2.2rem 1.8rem 1.8rem 1.8rem; position: relative;">
+        <button class="modal-close-btn" onclick="closeSubmissionNoticeModal()" aria-label="Close" style="position: absolute; right: 1.2rem; top: 1.2rem;">&times;</button>
+        <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.4); display: grid; place-items: center; margin: 0 auto 1rem auto; box-shadow: 0 0 25px rgba(56, 189, 248, 0.25);">
+          <i class="bi bi-send-check-fill" style="font-size: 2rem; color: #38bdf8;"></i>
+        </div>
+        <h3 id="noticeModalTitle" style="font-size: 1.6rem; color: #ffffff; margin-bottom: 0.3rem;">Application Details Ready!</h3>
+        <p style="color: #94a3b8; font-size: 0.95rem; margin: 0;">Click below to open Gmail with your prefilled application</p>
+      </div>
+
+      <div class="modal-body" style="padding: 2rem 2.2rem; text-align: center;">
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 1.4rem; text-align: left; margin-bottom: 1.8rem;">
+          <div style="font-size: 0.82rem; font-weight: 700; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.4rem;">
+            <i class="bi bi-paperclip"></i> Final Step: Attach Resume in Gmail
+          </div>
+          <p style="color: #e2e8f0; font-size: 0.94rem; line-height: 1.6; margin-bottom: 0.9rem;">
+            When Gmail opens, please click the <strong>paperclip icon (📎)</strong> at the bottom of Gmail to attach your file:
+          </p>
+          <div style="background: rgba(0, 87, 255, 0.1); border: 1px dashed rgba(0, 140, 255, 0.4); border-radius: 12px; padding: 0.85rem 1.1rem; color: #60a5fa; font-weight: 600; font-size: 0.92rem; word-break: break-all; display: flex; align-items: center; gap: 0.6rem;">
+            <i class="bi bi-file-earmark-pdf-fill" style="font-size: 1.2rem; color: #38bdf8;"></i>
+            <span id="noticeFileName">Resume File Name</span>
+          </div>
+        </div>
+
+        <button type="button" class="apply-submit-btn" id="confirmGmailBtn" onclick="confirmOpenGmail()" style="margin-top: 0; width: 100%; font-size: 1.05rem; padding: 1.05rem; display: flex; align-items: center; justify-content: center; gap: 0.6rem;">
+          <i class="bi bi-envelope-paper-fill"></i> Open Gmail &amp; Send Application →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===========================
        FOOTER
        =========================== -->
   <footer class="footer">
@@ -383,6 +418,8 @@
 
   <script src="script.js?v=2.0"></script>
   <script>
+    let pendingGmailUrl = '';
+
     // Modal Functions for Careers Page
     function openApplyModal(roleName) {
       document.getElementById('modalJobTitle').innerText = roleName;
@@ -395,6 +432,25 @@
       const modal = document.getElementById('applyModal');
       modal.classList.remove('active');
       document.body.style.overflow = '';
+    }
+
+    function openSubmissionNoticeModal() {
+      const modal = document.getElementById('submissionNoticeModal');
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSubmissionNoticeModal() {
+      const modal = document.getElementById('submissionNoticeModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function confirmOpenGmail() {
+      if (pendingGmailUrl) {
+        window.open(pendingGmailUrl, '_blank');
+      }
+      closeSubmissionNoticeModal();
     }
 
     function selectNoticePill(btn) {
@@ -421,7 +477,6 @@
 
     function handleApplySubmit(e) {
       e.preventDefault();
-      const btn = document.getElementById('applySubmitBtn');
       const role = document.getElementById('modalJobTitle').innerText;
       const name = document.getElementById('applicantName').value.trim();
       const email = document.getElementById('applicantEmail').value.trim();
@@ -436,10 +491,6 @@
       const portfolio = document.getElementById('applicantPortfolio').value.trim() || 'N/A';
       const resumeInput = document.getElementById('resumeInput');
       const resumeFileName = (resumeInput.files && resumeInput.files[0]) ? resumeInput.files[0].name : 'Resume File Selected';
-
-      btn.innerHTML = '<i class="bi bi-envelope-paper-fill"></i> Redirecting to Gmail...';
-      btn.style.background = '#16a34a';
-      btn.disabled = true;
 
       // Construct Gmail compose URL with prefilled applicant details & attachment instructions
       const subject = encodeURIComponent(`Job Application: ${role} - ${name}`);
@@ -465,30 +516,37 @@ Resume File Attached : ${resumeFileName}
 ========================================
 Submitted via LocaliQ Digital Media Careers Portal`;
 
-      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=info@localiqdigitalmedia.com&su=${subject}&body=${encodeURIComponent(bodyContent)}`;
+      pendingGmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=info@localiqdigitalmedia.com&su=${subject}&body=${encodeURIComponent(bodyContent)}`;
 
-      setTimeout(() => {
-        alert(`Opening Gmail...\n\n📌 Please click the paperclip icon (📎) at the bottom of the Gmail window to attach your file:\n"${resumeFileName}"\nbefore clicking Send.`);
-        window.open(gmailUrl, '_blank');
-        closeApplyModal();
-        e.target.reset();
-        btn.innerHTML = 'Submit Application <i class="bi bi-arrow-right"></i>';
-        btn.style.background = '';
-        btn.disabled = false;
-        document.getElementById('filePickerText').innerText = 'Choose resume file';
-        document.getElementById('fileNameDisplay').innerText = 'Supported formats: PDF, DOC, DOCX';
-        document.getElementById('fileNameDisplay').style.color = 'rgba(255, 255, 255, 0.6)';
-      }, 500);
+      // Set resume file name in notice modal
+      document.getElementById('noticeFileName').innerText = resumeFileName;
+
+      // Close application modal & reset form
+      closeApplyModal();
+      e.target.reset();
+      document.getElementById('filePickerText').innerText = 'Choose resume file';
+      document.getElementById('fileNameDisplay').innerText = 'Supported formats: PDF, DOC, DOCX';
+      document.getElementById('fileNameDisplay').style.color = 'rgba(255, 255, 255, 0.6)';
+
+      // Open custom submission confirmation modal
+      openSubmissionNoticeModal();
     }
 
-    // Close modal on escape key
+    // Close modals on escape key
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeApplyModal();
+      if (e.key === 'Escape') {
+        closeApplyModal();
+        closeSubmissionNoticeModal();
+      }
     });
 
     // Close modal when clicking outside modal card
     document.getElementById('applyModal').addEventListener('click', (e) => {
       if (e.target.id === 'applyModal') closeApplyModal();
+    });
+
+    document.getElementById('submissionNoticeModal').addEventListener('click', (e) => {
+      if (e.target.id === 'submissionNoticeModal') closeSubmissionNoticeModal();
     });
   </script>
 </body>
