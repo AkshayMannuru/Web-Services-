@@ -2119,12 +2119,16 @@ footer .logo-img {
 
 .whatsapp-link:hover { opacity: .9; padding-left: 4px; }
 
-/* =================/* ===========================
+/* ===========================
    CAREERS PAGE & APPLY MODAL (100% UNIFIED DARK THEME)
    =========================== */
 body[data-page="careers"] {
   background: var(--bg, #020818) !important;
   color: var(--text, #f8fafc) !important;
+}
+
+body[data-page="careers"] .section-title {
+  color: #ffffff !important;
 }
 
 body[data-page="careers"] .page-hero {
@@ -2182,23 +2186,23 @@ body[data-page="careers"] .careers-positions-section {
   }
 }
 
-/* Format matching .service-card & .pricing-card */
+/* Simple, Clean Card Format */
 .job-card {
   background: linear-gradient(145deg, rgba(20, 24, 33, 0.95), rgba(10, 12, 16, 0.95)) !important;
-  border: 1px solid rgba(255, 255, 255, 0.06) !important;
-  border-radius: 24px !important;
-  padding: 2.5rem 2.25rem !important;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 20px !important;
+  padding: 2.2rem !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform .4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow .4s ease, border-color .3s ease !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important;
   color: var(--text, #f8fafc) !important;
 }
 
-/* Asymmetric Left Accent Indicator (same as .service-card) */
+/* Subtle Left Accent Line */
 .job-card::before {
   content: '';
   position: absolute;
@@ -2209,18 +2213,18 @@ body[data-page="careers"] .careers-positions-section {
   background: var(--gradient);
   border-radius: 0 4px 4px 0;
   opacity: 0.8;
-  transition: opacity .35s ease, transform .35s ease;
+  transition: opacity 0.25s ease;
 }
 
+/* Simple, Clean Hover Animation */
 .job-card:hover {
-  transform: translateY(-8px) scale(1.015) !important;
-  border-color: rgba(37, 99, 235, 0.3) !important;
-  box-shadow: 0 20px 45px rgba(0, 87, 255, 0.15), 0 0 35px rgba(124, 58, 237, 0.08) !important;
+  transform: translateY(-4px) !important;
+  border-color: rgba(0, 132, 255, 0.35) !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5) !important;
 }
 
 .job-card:hover::before {
   opacity: 1;
-  transform: scaleY(1.1);
 }
 
 .job-header {
