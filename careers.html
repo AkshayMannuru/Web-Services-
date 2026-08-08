@@ -441,9 +441,13 @@
       btn.style.background = '#16a34a';
       btn.disabled = true;
 
-      // Construct Gmail compose URL with prefilled applicant details
+      // Construct Gmail compose URL with prefilled applicant details & attachment instructions
       const subject = encodeURIComponent(`Job Application: ${role} - ${name}`);
-      const bodyContent = `JOB APPLICATION DETAILS
+      const bodyContent = `📌 ATTACHMENT NOTICE FOR APPLICANT:
+Please click the paperclip icon (📎) at the bottom of this Gmail window to attach your resume file: "${resumeFileName}" before clicking Send.
+
+========================================
+JOB APPLICATION DETAILS
 ========================================
 Position Applied For : ${role}
 Applicant Name       : ${name}
@@ -457,13 +461,14 @@ Expected Salary      : ${salary}
 Notice Period        : ${notice}
 LinkedIn Profile     : ${linkedin}
 Portfolio Website    : ${portfolio}
-Resume File          : ${resumeFileName}
+Resume File Attached : ${resumeFileName}
 ========================================
 Submitted via LocaliQ Digital Media Careers Portal`;
 
       const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=info@localiqdigitalmedia.com&su=${subject}&body=${encodeURIComponent(bodyContent)}`;
 
       setTimeout(() => {
+        alert(`Opening Gmail...\n\n📌 Please click the paperclip icon (📎) at the bottom of the Gmail window to attach your file:\n"${resumeFileName}"\nbefore clicking Send.`);
         window.open(gmailUrl, '_blank');
         closeApplyModal();
         e.target.reset();
