@@ -39,42 +39,67 @@
   </nav>
 
   <!-- ===========================
-       CAREERS HERO SECTION
+       CAREERS PAGE HERO
        =========================== -->
-  <section class="section careers-hero">
-    <div class="container">
-      <div class="careers-hero-badge reveal">
-        <i class="bi bi-rocket-takeoff"></i> Careers at LocaliQ
-      </div>
-      <h1 class="hero-title reveal">Build Your Future With Us</h1>
-      <p class="hero-sub reveal" style="max-width: 680px; margin: 1rem auto 2.5rem auto;">
-        Find the perfect role that matches your skills and passion. We offer a dynamic, growth-oriented workplace where your talent is valued and rewarded.
-      </p>
+  <div id="page-careers" class="page active">
+    <section class="page-hero">
+      <!-- Aurora canvas -->
+      <canvas id="aurora-canvas" aria-hidden="true"></canvas>
 
-      <!-- Stats / Culture highlights -->
-      <div class="hero-stats reveal" style="justify-content: center; gap: 2rem; margin-top: 1rem;">
-        <div class="stat">
-          <strong>100%</strong>
-          <span>Growth Oriented</span>
-        </div>
-        <div class="stat-div"></div>
-        <div class="stat">
-          <strong>Competitive</strong>
-          <span>Compensation</span>
-        </div>
-        <div class="stat-div"></div>
-        <div class="stat">
-          <strong>Hyderabad</strong>
-          <span>Prime Location</span>
+      <!-- Particle canvas -->
+      <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+      <!-- Grid overlay -->
+      <div class="grid-overlay" aria-hidden="true"></div>
+
+      <!-- Ambient orbs -->
+      <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
+
+      <!-- Decorative shapes -->
+      <div class="hero-shape shape-ring"       aria-hidden="true"></div>
+      <div class="hero-shape shape-ring-inner" aria-hidden="true"></div>
+      <div class="hero-shape shape-dot-cluster" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+      </div>
+
+      <!-- Parallax background container -->
+      <div class="hero-bg" id="heroBg" aria-hidden="true"></div>
+      <div class="container page-hero-content">
+        <div class="section-label" style="color:#60a5fa;"><i class="bi bi-rocket-takeoff-fill"></i> Careers at LocaliQ</div>
+        <h1 class="hero-title">Build Your Future<br><span class="gradient-text">With Us</span></h1>
+        <p class="hero-sub" style="max-width: 680px; margin: 1rem auto 2rem auto;">
+          Find the perfect role that matches your skills and passion. We offer a dynamic, growth-oriented workplace where your talent is valued and rewarded.
+        </p>
+
+        <!-- Stats / Culture highlights -->
+        <div class="hero-stats" style="justify-content: center; gap: 2rem; margin-top: 1rem;">
+          <div class="stat">
+            <strong>100%</strong>
+            <span>Growth Oriented</span>
+          </div>
+          <div class="stat-div"></div>
+          <div class="stat">
+            <strong>Competitive</strong>
+            <span>Compensation</span>
+          </div>
+          <div class="stat-div"></div>
+          <div class="stat">
+            <strong>Hyderabad</strong>
+            <span>Prime Location</span>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===========================
-       OPEN POSITIONS SECTION
-       =========================== -->
-  <section class="section" style="background: var(--bg-soft); padding-top: 3.5rem; padding-bottom: 5rem;">
+    <!-- ===========================
+         OPEN POSITIONS SECTION
+         =========================== -->
+    <section class="section careers-positions-section" style="background:#06101f; padding-top: 4.5rem; padding-bottom: 6rem;">
     <div class="container">
       <div style="text-align: center; max-width: 650px; margin: 0 auto 3rem auto;" class="reveal">
         <div class="section-label">WE ARE HIRING</div>
@@ -159,6 +184,7 @@
 
     </div>
   </section>
+</div><!-- /page-careers -->
 
   <!-- ===========================
        APPLY NOW MODAL POPUP
