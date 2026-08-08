@@ -372,9 +372,12 @@ if (statsSection) {
       words.forEach((word, i) => {
         const span = document.createElement('span');
         span.className = 'word';
-        span.textContent = word + ' ';
+        span.textContent = word;
+        span.style.display = 'inline-block';
+        span.style.marginRight = '0.35em';
         span.style.transitionDelay = `${i * 0.08}s`;
         frag.appendChild(span);
+        frag.appendChild(document.createTextNode(' '));
       });
       node.replaceWith(frag);
     }
