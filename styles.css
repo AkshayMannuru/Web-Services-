@@ -2030,10 +2030,13 @@ footer .logo-img {
   color: #fff !important;
   border-color: #333333 !important;
 }
-.social-links a[aria-label*="LinkedIn"] {
+.social-links a[aria-label*="LinkedIn"],
+.social-links span[aria-label*="LinkedIn"] {
   background: #0077b5 !important;
   color: #fff !important;
   border-color: #0077b5 !important;
+  cursor: default !important;
+  pointer-events: none !important;
 }
 
 .social-links a[aria-label*="Facebook"]:hover {
@@ -2045,8 +2048,10 @@ footer .logo-img {
 .social-links a[aria-label*="Twitter"]:hover {
   box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15) !important;
 }
-.social-links a[aria-label*="LinkedIn"]:hover {
-  box-shadow: 0 8px 20px rgba(0, 119, 181, 0.45) !important;
+.social-links a[aria-label*="LinkedIn"]:hover,
+.social-links span[aria-label*="LinkedIn"]:hover {
+  box-shadow: 0 4px 14px rgba(0, 119, 181, 0.35) !important;
+  transform: none !important;
 }
 
 .footer-col { position: relative; z-index: 1; }
