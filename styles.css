@@ -1203,8 +1203,14 @@ footer .logo-img,
               border-color .3s ease,
               opacity .8s cubic-bezier(0.165, 0.84, 0.44, 1);
   will-change: transform;
-  cursor: default;
+  cursor: pointer;
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45) !important;
+}
+
+.card-overlay-link {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
 }
 
 /* Glowing pointer spotlight */
