@@ -1,4 +1,5 @@
 Options +FollowSymLinks -MultiViews
+DirectoryIndex index.html services.html
 RewriteEngine On
 RewriteBase /
 
