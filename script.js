@@ -462,7 +462,7 @@ document.addEventListener('click', (e) => {
 });
 
 /* ============================================================
-   TESTIMONIALS CAROUSEL
+   TESTIMONIALS CAROUSEL — SEAMLESS AUTO-SCROLLING
    ============================================================ */
 (function initCarousel() {
   const track = qs('#testimonialsTrack');
@@ -471,32 +471,42 @@ document.addEventListener('click', (e) => {
   const dotsContainer = qs('#carouselDots');
   if (!track) return;
 
-  const cards = qsa('.testimonial-card', track);
-  const total = cards.length;
-  let current = 0;
-  let autoTimer;
+  const originalCards = Array.from(qsa('.testimonial-card', track));
+  if (!originalCards.length) return;
 
-  function getPerView() {
-    return window.innerWidth <= 768 ? 1 : 2;
+  const originalCount = originalCards.length;
+
+  // Clone original cards for endless infinite auto-scroll
+  originalCards.forEach(card => {
+    const clone = card.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    track.appendChild(clone);
+  });
+
+  const allCards = Array.from(qsa('.testimonial-card', track));
+  let currentIndex = 0;
+  let autoTimer = null;
+  let isTransitioning = false;
+
+  function getGap() {
+    return window.innerWidth <= 768 ? 16 : 24;
   }
 
-  function getMaxIndex() {
-    const perView = getPerView();
-    return Math.max(0, total - perView);
+  function getCardWidth() {
+    if (!allCards[0]) return 0;
+    return allCards[0].offsetWidth + getGap();
   }
 
   function renderDots() {
     if (!dotsContainer) return;
-    const maxIdx = getMaxIndex();
     dotsContainer.innerHTML = '';
-    for (let i = 0; i <= maxIdx; i++) {
+    for (let i = 0; i < originalCount; i++) {
       const btn = document.createElement('button');
-      btn.className = `carousel-dot${i === current ? ' active' : ''}`;
-      btn.dataset.index = i;
-      btn.setAttribute('aria-label', `Slide ${i + 1}`);
+      btn.className = `carousel-dot${i === 0 ? ' active' : ''}`;
+      btn.setAttribute('aria-label', `Go to slide ${i + 1}`);
       btn.addEventListener('click', () => {
-        goTo(i);
-        restartAuto();
+        goToSlide(i, true);
+        resetAuto();
       });
       dotsContainer.appendChild(btn);
     }
@@ -505,60 +515,108 @@ document.addEventListener('click', (e) => {
   function updateDots() {
     if (!dotsContainer) return;
     const dots = qsa('.carousel-dot', dotsContainer);
+    const activeIndex = currentIndex % originalCount;
     dots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === current);
-      dot.setAttribute('aria-pressed', i === current);
+      dot.classList.toggle('active', i === activeIndex);
     });
   }
 
-  function goTo(index, smooth = true) {
-    const maxIdx = getMaxIndex();
-    current = clamp(index, 0, maxIdx);
+  function goToSlide(index, animated = true) {
+    const cardW = getCardWidth();
+    if (!cardW) return;
 
-    const card = cards[0];
-    const trackGap = window.innerWidth <= 768 ? 16 : 24;
-    const cardW = card.offsetWidth + trackGap;
-    const offset = current * cardW;
+    if (animated) {
+      track.style.transition = 'transform 0.75s cubic-bezier(0.16, 1, 0.3, 1)';
+      isTransitioning = true;
+    } else {
+      track.style.transition = 'none';
+      isTransitioning = false;
+    }
 
-    track.style.transition = smooth ? 'transform .65s cubic-bezier(0.16, 1, 0.3, 1)' : 'none';
+    currentIndex = index;
+    const offset = currentIndex * cardW;
     track.style.transform = `translate3d(-${offset}px, 0, 0)`;
     updateDots();
   }
 
+  // Handle seamless infinite loop boundary reset
+  track.addEventListener('transitionend', () => {
+    isTransitioning = false;
+    if (currentIndex >= originalCount) {
+      currentIndex = currentIndex % originalCount;
+      goToSlide(currentIndex, false);
+    } else if (currentIndex < 0) {
+      currentIndex = originalCount + (currentIndex % originalCount);
+      goToSlide(currentIndex, false);
+    }
+  });
+
   function nextSlide() {
-    const maxIdx = getMaxIndex();
-    goTo(current >= maxIdx ? 0 : current + 1);
+    if (isTransitioning) return;
+    goToSlide(currentIndex + 1, true);
   }
 
   function prevSlide() {
-    const maxIdx = getMaxIndex();
-    goTo(current <= 0 ? maxIdx : current - 1);
+    if (isTransitioning) return;
+    if (currentIndex <= 0) {
+      currentIndex = originalCount;
+      goToSlide(currentIndex, false);
+      track.getBoundingClientRect(); // force repaint
+    }
+    goToSlide(currentIndex - 1, true);
   }
 
   function startAuto() {
-    autoTimer = setInterval(nextSlide, 5000);
+    if (autoTimer) return;
+    autoTimer = setInterval(nextSlide, 3500);
   }
 
   function stopAuto() {
-    clearInterval(autoTimer);
+    if (autoTimer) {
+      clearInterval(autoTimer);
+      autoTimer = null;
+    }
   }
 
-  function restartAuto() {
+  function resetAuto() {
     stopAuto();
     startAuto();
   }
 
   renderDots();
-  goTo(0, false);
+
+  // Initial positioning after DOM layout
+  window.addEventListener('load', () => {
+    goToSlide(0, false);
+  });
+  requestAnimationFrame(() => {
+    goToSlide(0, false);
+  });
+
   startAuto();
 
-  if (next) next.addEventListener('click', () => { nextSlide(); restartAuto(); });
-  if (prev) prev.addEventListener('click', () => { prevSlide(); restartAuto(); });
+  // Controls
+  if (next) next.addEventListener('click', () => { nextSlide(); resetAuto(); });
+  if (prev) prev.addEventListener('click', () => { prevSlide(); resetAuto(); });
 
-  window.addEventListener('resize', () => {
-    renderDots();
-    goTo(current, false);
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    const carouselEl = qs('#testimonialsCarousel');
+    if (!carouselEl) return;
+    const rect = carouselEl.getBoundingClientRect();
+    const inView = rect.top < window.innerHeight && rect.bottom > 0;
+    if (!inView) return;
+
+    if (e.key === 'ArrowRight') { nextSlide(); resetAuto(); }
+    if (e.key === 'ArrowLeft')  { prevSlide(); resetAuto(); }
   });
+
+  // Pause on hover
+  const carouselEl = qs('#testimonialsCarousel');
+  if (carouselEl) {
+    carouselEl.addEventListener('mouseenter', stopAuto);
+    carouselEl.addEventListener('mouseleave', startAuto);
+  }
 
   // Touch / swipe support
   let touchStartX = 0;
@@ -569,36 +627,30 @@ document.addEventListener('click', (e) => {
 
   track.addEventListener('touchend', (e) => {
     const diff = touchStartX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 50) {
+    if (Math.abs(diff) > 40) {
       diff > 0 ? nextSlide() : prevSlide();
     }
     startAuto();
   }, { passive: true });
 
-  // Keyboard navigation
-  document.addEventListener('keydown', (e) => {
-    const carousel = qs('#testimonialsCarousel');
-    if (!carousel) return;
-    const rect = carousel.getBoundingClientRect();
-    const inView = rect.top < window.innerHeight && rect.bottom > 0;
-    if (!inView) return;
-
-    if (e.key === 'ArrowRight') { nextSlide(); restartAuto(); }
-    if (e.key === 'ArrowLeft')  { prevSlide(); restartAuto(); }
-  });
-
-  // Pause on hover
-  const carousel = qs('#testimonialsCarousel');
-  if (carousel) {
-    carousel.addEventListener('mouseenter', stopAuto);
-    carousel.addEventListener('mouseleave', startAuto);
-  }
-
   // Re-layout on resize
   window.addEventListener('resize', () => {
-    calcMax();
-    goTo(current, false);
+    goToSlide(currentIndex, false);
   }, { passive: true });
+
+  // IntersectionObserver to auto-scroll only when section is visible
+  if ('IntersectionObserver' in window && carouselEl) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          startAuto();
+        } else {
+          stopAuto();
+        }
+      });
+    }, { threshold: 0.15 });
+    observer.observe(carouselEl);
+  }
 })();
 
 /* ============================================================
