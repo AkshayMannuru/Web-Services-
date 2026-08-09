@@ -1,0 +1,124 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/service-details.html",
+      "has": [{ "type": "query", "key": "service", "value": "(?i)Software.*Development" }],
+      "destination": "/services/software-development",
+      "permanent": true
+    },
+    {
+      "source": "/service-details.html",
+      "has": [{ "type": "query", "key": "service", "value": "(?i)(Business.*Website|Web.*Development)" }],
+      "destination": "/services/business-website-development",
+      "permanent": true
+    },
+    {
+      "source": "/service-details.html",
+      "has": [{ "type": "query", "key": "service", "value": "(?i)(Ecommerce.*Website|E-commerce.*Store|E-commerce.*Solutions)" }],
+      "destination": "/services/ecommerce-website-development",
+      "permanent": true
+    },
+    {
+      "source": "/service-details.html",
+      "has": [{ "type": "query", "key": "service", "value": "(?i)Restaurant.*Website" }],
+      "destination": "/services/restaurant-website-development",
+      "permanent": true
+    },
+    {
+      "source": "/service-details.html",
+      "has": [{ "type": "query", "key": "service", "value": "(?i)Portfolio.*Website" }],
+      "destination": "/services/portfolio-website-development",
+      "permanent": true
+    },
+    {
+      "source": "/service-details.html",
+      "has": [{ "type": "query", "key": "service", "value": "(?i)Website.*Redesign" }],
+      "destination": "/services/website-redesign",
+      "permanent": true
+    },
+    {
+      "source": "/service-details.html",
+      "has": [{ "type": "query", "key": "service", "value": "(?i)(SEO|SEO.*Optimization)" }],
+      "destination": "/services/seo-services",
+      "permanent": true
+    },
+    {
+      "source": "/service-details.html",
+      "has": [{ "type": "query", "key": "service", "value": "(?i)(Website.*Maintenance|Web.*Maintenance)" }],
+      "destination": "/services/website-maintenance",
+      "permanent": true
+    },
+    {
+      "source": "/service-details.html",
+      "has": [{ "type": "query", "key": "service", "value": "(?i)UI.*UX.*Design" }],
+      "destination": "/services/ui-ux-design",
+      "permanent": true
+    },
+    {
+      "source": "/service-details.html",
+      "has": [{ "type": "query", "key": "service", "value": "(?i)Custom.*Web.*Applications" }],
+      "destination": "/services/custom-web-application-development",
+      "permanent": true
+    },
+    {
+      "source": "/service-details.html",
+      "has": [{ "type": "query", "key": "service", "value": "(?i)Mobile.*App.*Development" }],
+      "destination": "/services/mobile-app-development",
+      "permanent": true
+    },
+    {
+      "source": "/service-details.html",
+      "has": [{ "type": "query", "key": "service", "value": "(?i)Figma.*Design" }],
+      "destination": "/services/figma-design",
+      "permanent": true
+    },
+    {
+      "source": "/service-details.html",
+      "has": [{ "type": "query", "key": "service", "value": "(?i)Digital.*Marketing" }],
+      "destination": "/services/digital-marketing",
+      "permanent": true
+    },
+    {
+      "source": "/service-details.html",
+      "has": [{ "type": "query", "key": "service", "value": "(?i)Content.*Creation" }],
+      "destination": "/services/content-creation",
+      "permanent": true
+    },
+    {
+      "source": "/service-details.html",
+      "has": [{ "type": "query", "key": "service", "value": "(?i)Software.*Testing" }],
+      "destination": "/services/software-testing",
+      "permanent": true
+    },
+    {
+      "source": "/service-details.html",
+      "has": [{ "type": "query", "key": "service", "value": "(?i)Data.*Analysis" }],
+      "destination": "/services/data-analysis",
+      "permanent": true
+    },
+    {
+      "source": "/service-details.html",
+      "has": [{ "type": "query", "key": "service", "value": "(?i)Cloud.*DevOps" }],
+      "destination": "/services/cloud-devops",
+      "permanent": true
+    },
+    {
+      "source": "/service-details.html",
+      "has": [{ "type": "query", "key": "service", "value": "(?i)Cybersecurity" }],
+      "destination": "/services/cybersecurity",
+      "permanent": true
+    },
+    {
+      "source": "/service-details.html",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/service-details",
+      "destination": "/services",
+      "permanent": true
+    }
+  ]
+}

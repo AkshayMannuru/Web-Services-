@@ -1,0 +1,29 @@
+# Netlify & Cloudflare Pages 301 Redirect Rules for Legacy Service URLs
+
+/service-details.html service=Software*Development /services/software-development 301
+/service-details.html service=Business*Website /services/business-website-development 301
+/service-details.html service=Web*Development /services/business-website-development 301
+/service-details.html service=Ecommerce*Website /services/ecommerce-website-development 301
+/service-details.html service=E-commerce*Store /services/ecommerce-website-development 301
+/service-details.html service=E-commerce*Solutions /services/ecommerce-website-development 301
+/service-details.html service=Restaurant*Website /services/restaurant-website-development 301
+/service-details.html service=Portfolio*Website /services/portfolio-website-development 301
+/service-details.html service=Website*Redesign /services/website-redesign 301
+/service-details.html service=SEO*Optimization /services/seo-services 301
+/service-details.html service=SEO /services/seo-services 301
+/service-details.html service=Website*Maintenance /services/website-maintenance 301
+/service-details.html service=Web*Maintenance /services/website-maintenance 301
+/service-details.html service=UI*UX*Design /services/ui-ux-design 301
+/service-details.html service=Custom*Web*Applications /services/custom-web-application-development 301
+/service-details.html service=Mobile*App*Development /services/mobile-app-development 301
+/service-details.html service=Figma*Design /services/figma-design 301
+/service-details.html service=Digital*Marketing /services/digital-marketing 301
+/service-details.html service=Content*Creation /services/content-creation 301
+/service-details.html service=Software*Testing /services/software-testing 301
+/service-details.html service=Data*Analysis /services/data-analysis 301
+/service-details.html service=Cloud*DevOps /services/cloud-devops 301
+/service-details.html service=Cybersecurity /services/cybersecurity 301
+/service-details.html /services 301
+/service-details /services 301
+
+/*.html /:splat 301!

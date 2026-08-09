@@ -1,0 +1,86 @@
+Options +FollowSymLinks -MultiViews
+RewriteEngine On
+RewriteBase /
+
+# ----------------------------------------------------------------------
+# 1. 301 REDIRECTS FOR LEGACY SERVICE QUERY PARAMETERS
+# ----------------------------------------------------------------------
+RewriteCond %{THE_REQUEST} \s/service-details(?:\.html)?\?service=(?:Software%20Development|Software\+Development) [NC]
+RewriteRule ^ /services/software-development? [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/service-details(?:\.html)?\?service=(?:Business%20Website|Business\+Website|Web%20Development|Web\+Development) [NC]
+RewriteRule ^ /services/business-website-development? [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/service-details(?:\.html)?\?service=(?:Ecommerce%20Website|Ecommerce\+Website|E-commerce%20Store|E-commerce\+Solutions) [NC]
+RewriteRule ^ /services/ecommerce-website-development? [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/service-details(?:\.html)?\?service=(?:Restaurant%20Website|Restaurant\+Website) [NC]
+RewriteRule ^ /services/restaurant-website-development? [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/service-details(?:\.html)?\?service=(?:Portfolio%20Website|Portfolio\+Website) [NC]
+RewriteRule ^ /services/portfolio-website-development? [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/service-details(?:\.html)?\?service=(?:Website%20Redesign|Website\+Redesign) [NC]
+RewriteRule ^ /services/website-redesign? [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/service-details(?:\.html)?\?service=(?:SEO|SEO%20Optimization|SEO\+Optimization) [NC]
+RewriteRule ^ /services/seo-services? [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/service-details(?:\.html)?\?service=(?:Website%20Maintenance|Website\+Maintenance|Web%20Maintenance) [NC]
+RewriteRule ^ /services/website-maintenance? [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/service-details(?:\.html)?\?service=(?:UI/UX%20Design|UI%2FUX\+Design|UI%2FUX%20Design|UI%2FUX%20%26%20Figma%20Design|UI%2FUX\+%26\+Figma\+Design) [NC]
+RewriteRule ^ /services/ui-ux-design? [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/service-details(?:\.html)?\?service=(?:Custom%20Web%20Applications|Custom\+Web\+Applications) [NC]
+RewriteRule ^ /services/custom-web-application-development? [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/service-details(?:\.html)?\?service=(?:Mobile%20App%20Development|Mobile\+App\+Development) [NC]
+RewriteRule ^ /services/mobile-app-development? [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/service-details(?:\.html)?\?service=(?:Figma%20Design|Figma\+Design) [NC]
+RewriteRule ^ /services/figma-design? [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/service-details(?:\.html)?\?service=(?:Digital%20Marketing|Digital\+Marketing) [NC]
+RewriteRule ^ /services/digital-marketing? [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/service-details(?:\.html)?\?service=(?:Content%20Creation|Content\+Creation) [NC]
+RewriteRule ^ /services/content-creation? [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/service-details(?:\.html)?\?service=(?:Software%20Testing|Software\+Testing) [NC]
+RewriteRule ^ /services/software-testing? [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/service-details(?:\.html)?\?service=(?:Data%20Analysis|Data\+Analysis) [NC]
+RewriteRule ^ /services/data-analysis? [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/service-details(?:\.html)?\?service=(?:Cloud%20%26%20DevOps|Cloud\+%26\+DevOps) [NC]
+RewriteRule ^ /services/cloud-devops? [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/service-details(?:\.html)?\?service=(?:Cybersecurity) [NC]
+RewriteRule ^ /services/cybersecurity? [R=301,L]
+
+# Generic fallback for any remaining /service-details.html requests
+RewriteCond %{THE_REQUEST} \s/service-details(?:\.html)? [NC]
+RewriteRule ^ /services? [R=301,L]
+
+# ----------------------------------------------------------------------
+# 2. 301 REDIRECT .html EXTENSIONS TO CLEAN URLS
+# ----------------------------------------------------------------------
+RewriteCond %{THE_REQUEST} \s/index\.html [NC]
+RewriteRule ^index\.html$ / [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/([^/]+)\.html [NC]
+RewriteRule ^([^/]+)\.html$ /$1 [R=301,L]
+
+# ----------------------------------------------------------------------
+# 3. REWRITE CLEAN URLS TO .html FILES INTERNAL
+# ----------------------------------------------------------------------
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^([^/]+)$ $1.html [L]
+
+# ----------------------------------------------------------------------
+# 4. CUSTOM 404 ERROR PAGE
+# ----------------------------------------------------------------------
+ErrorDocument 404 /404.html
