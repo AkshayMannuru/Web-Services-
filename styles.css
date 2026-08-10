@@ -12,13 +12,13 @@
    DESIGN TOKENS / ROOT
    =========================== */
 :root {
-  /* Core palette */
-  --bg:            #ffffff;
-  --bg-soft:       #f7f8fc;
-  --bg-card:       #ffffff;
-  --text:          #0a0a12;
-  --text-muted:    #6b7280;
-  --text-subtle:   #9ca3af;
+  /* Core palette - Dark Black-Gray Theme */
+  --bg:            #080c1a;
+  --bg-soft:       #0f1424;
+  --bg-card:       #12182b;
+  --text:          #f1f5f9;
+  --text-muted:    #94a3b8;
+  --text-subtle:   #64748b;
   --accent:        #0057ff;
   --accent-2:      #7c3aed;
   --accent-3:      #06b6d4;
@@ -90,11 +90,33 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scrollbar-width: thin;
+  scrollbar-color: #0057ff #080c1a;
+}
+
+/* Custom Blue Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080c1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #0057ff 0%, #7c3aed 100%);
+  border-radius: 9999px;
+  border: 2px solid #080c1a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #2563eb 0%, #6d28d9 100%);
 }
 
 body {
   font-family: var(--font-body);
-  background: var(--bg);
+  background: #080c1a !important;
   color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;
@@ -366,19 +388,19 @@ p, li, span, div {
   top: 0; left: 0; right: 0;
   height: var(--nav-h);
   z-index: 1000;
-  background: transparent !important;
-  box-shadow: none !important;
-  border-bottom: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
+  background: rgba(8, 12, 26, 0.85) !important;
+  backdrop-filter: blur(16px) saturate(1.8) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(1.8) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4), 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   transition: background .4s ease, box-shadow .4s ease, height .4s var(--ease-out-expo), backdrop-filter .4s, transform .3s ease;
 }
 
 .navbar.scrolled {
-  background: rgba(8, 12, 26, 0.85) !important;
+  background: rgba(8, 12, 26, 0.95) !important;
   backdrop-filter: blur(16px) saturate(1.8) !important;
   -webkit-backdrop-filter: blur(16px) saturate(1.8) !important;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6), 0 1px 0 rgba(255, 255, 255, 0.08) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   height: var(--nav-h) !important;
 }
