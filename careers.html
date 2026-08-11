@@ -45,11 +45,48 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "Careers at LocalIQ Digital Media",
-  "url": "https://localiqdigitalmedia.in/careers"
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://localiqdigitalmedia.in/careers#webpage",
+      "url": "https://localiqdigitalmedia.in/careers",
+      "name": "Careers at LocalIQ Digital Media",
+      "description": "Join the LocalIQ Digital Media team. Explore open positions in web development, design and digital marketing.",
+      "isPartOf": {
+        "@id": "https://localiqdigitalmedia.in/#website"
+      },
+      "about": {
+        "@id": "https://localiqdigitalmedia.in/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://localiqdigitalmedia.in/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Careers",
+          "item": "https://localiqdigitalmedia.in/careers"
+        }
+      ]
+    }
+  ]
 }
 </script>
+<!-- Favicons & App Icons for Browsers & Google Search -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 </head>
 <body data-page="careers">
 

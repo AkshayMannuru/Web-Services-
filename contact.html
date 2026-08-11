@@ -156,17 +156,48 @@ body[data-page="contact"] .contact-detail-item span {
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "ContactPage",
-  "name": "Contact LocalIQ Digital Media",
-  "url": "https://localiqdigitalmedia.in/contact",
-  "mainEntity": {
-    "@type": "Organization",
-    "name": "LocalIQ Digital Media",
-    "url": "https://localiqdigitalmedia.in/",
-    "logo": "https://localiqdigitalmedia.in/logo.png"
-  }
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://localiqdigitalmedia.in/contact#webpage",
+      "url": "https://localiqdigitalmedia.in/contact",
+      "name": "Contact LocalIQ Digital Media",
+      "description": "Get in touch with LocalIQ Digital Media for website development, SEO and digital marketing enquiries.",
+      "isPartOf": {
+        "@id": "https://localiqdigitalmedia.in/#website"
+      },
+      "about": {
+        "@id": "https://localiqdigitalmedia.in/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://localiqdigitalmedia.in/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Contact",
+          "item": "https://localiqdigitalmedia.in/contact"
+        }
+      ]
+    }
+  ]
 }
 </script>
+<!-- Favicons & App Icons for Browsers & Google Search -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 </head>
 <body data-page="contact">
 

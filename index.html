@@ -98,13 +98,29 @@
       "@type": "Organization",
       "@id": "https://localiqdigitalmedia.in/#organization",
       "name": "LocalIQ Digital Media",
+      "alternateName": "LocalIQ",
       "url": "https://localiqdigitalmedia.in/",
-      "logo": "https://localiqdigitalmedia.in/logo.png",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://localiqdigitalmedia.in/android-chrome-512x512.png",
+        "width": 512,
+        "height": 512
+      },
+      "image": "https://localiqdigitalmedia.in/android-chrome-512x512.png",
       "description": "Professional website development, web design, e-commerce, SEO, and digital solutions for growing businesses.",
+      "foundingDate": "2024",
+      "areaServed": "IN",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "url": "https://localiqdigitalmedia.in/contact",
+        "availableLanguage": "English"
+      },
       "sameAs": [
         "https://www.facebook.com/profile.php?id=61559983935950",
         "https://www.instagram.com/localiq1/",
-        "https://x.com/LocaliqM"
+        "https://x.com/LocaliqM",
+        "https://github.com/AkshayMannuru/Web-Services-"
       ]
     },
     {
@@ -112,13 +128,87 @@
       "@id": "https://localiqdigitalmedia.in/#website",
       "url": "https://localiqdigitalmedia.in/",
       "name": "LocalIQ Digital Media",
+      "description": "Affordable professional website design, development, SEO and digital marketing for businesses.",
       "publisher": {
         "@id": "https://localiqdigitalmedia.in/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://localiqdigitalmedia.in/services?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
       }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://localiqdigitalmedia.in/#webpage",
+      "url": "https://localiqdigitalmedia.in/",
+      "name": "Website Development Company | LocalIQ Digital Media",
+      "isPartOf": { "@id": "https://localiqdigitalmedia.in/#website" },
+      "about": { "@id": "https://localiqdigitalmedia.in/#organization" },
+      "description": "LocalIQ Digital Media provides professional website design, web development, e-commerce, SEO and custom digital solutions for businesses and growing brands."
+    },
+    {
+      "@type": "SiteLinksSearchBox",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://localiqdigitalmedia.in/services?q={search_term_string}"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://localiqdigitalmedia.in/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "About",
+          "item": "https://localiqdigitalmedia.in/about"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Services",
+          "item": "https://localiqdigitalmedia.in/services"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Portfolio",
+          "item": "https://localiqdigitalmedia.in/portfolio"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Careers",
+          "item": "https://localiqdigitalmedia.in/careers"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "Contact",
+          "item": "https://localiqdigitalmedia.in/contact"
+        }
+      ]
     }
   ]
 }
 </script>
+<!-- Favicons & App Icons for Browsers & Google Search -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 </head>
 <body data-page="home">
 
